@@ -1,0 +1,129 @@
+/* common css to include */
+img{
+    width: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+.blueBg{
+    background-color: #195774;
+}
+.center{
+    text-align: center;
+}
+.puppyPage {
+    padding-block: 30px;
+    color: white;
+    font-size: 50px;
+}
+.puppies{
+    display:flex;
+    width: 960px;
+    margin: 30px auto;
+    justify-content: space-between;
+    
+}
+.missingPuppy{
+    align-items: center;
+    background-color: #EE4D65;
+    width: 310px;
+    height: 310px;
+}
+.missingP{
+    font-size: 55px;
+    padding-top: 50px;
+}
+/* different class to be able to adjust the height*/
+
+.morePuppies{
+    font-size: 45px;
+}
+.footerN{
+    padding-block: 50px;
+    font-size: 40px;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .headerimg{
+    width: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.header1{
+    padding: 30px;
+}
+.puppies{
+    display: flex;
+    width: 960px;
+    justify-content: space-between;
+    margin: 60px auto;
+}
+.missingText {
+    width: 310px;
+    height: 280px;
+    padding-top: 30px;
+    font-size: 60px;
+}
+
+
+
+.blueBg {
+    background-color: #195774;
+}
+
+.red{
+    background-color: #EE4D65;
+}
+.center {
+    text-align: center;
+}
+.top {
+    width: 100%;
+    
+}
+
+
+footer p {
+    padding-block: 50px;
+    font-size: 35px;;
+} */
