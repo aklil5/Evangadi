@@ -1,0 +1,96 @@
+* {
+    padding: 0;
+    margin: 0;
+    
+}
+img{
+    max-width: 100%;
+}
+
+
+.header-wrapper{
+    background-color: black;
+}
+header ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    
+}
+/* check with ul only */
+header ul li a {
+    text-decoration: none;
+    color: white;
+    opacity: 0.8;
+}
+
+
+.second-wrapper{
+    background-image: url('../images/home/iphone11-pro-bg.jpg');
+    /* background-size: cover; */
+    background-position: center;  
+    height: 600px;
+    color: white;
+}
+
+.third-wrapper{
+    background-image: url('../images/home/iphone11-bg.jpg');
+    background-position: center;
+    height: 650px;
+}
+
+.fourth-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fourth-wrapper .left-wrapper{
+    background-image: url(../images/home/watch-series-5.jpg);
+    background-position-x: left;
+    background-position: center;
+    width: 500px;
+    height:600px;
+}
+
+.fourth-wrapper .right-wrapper{
+    background-image: url(../images/home/apple-card.jpg);
+    background-position-x: right;
+    background-position: center;
+    width: 500px;
+    height: 600px;
+}
+
+.fifth-wrapper
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fifth-wrapper .left-wrapper {
+    background-image: url(../images/home/apple-tv-background.jpg);
+    background-position-x: left;
+    background-position: center;
+    height: 600px;
+}
+
+.fifth-wrapper .right-wrapper{
+    background-image: url(../images/home/air-pods.jpg);
+    background-position-x: right;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+
+}
+
+
+
+
+
+
+.footer-wrapper{
+    background-color: #F5F5F7;
+}
+.footer-links-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
