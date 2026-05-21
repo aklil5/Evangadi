@@ -1,0 +1,37 @@
+
+h1 {
+    background-color: plum;
+        
+}
+
+
+@media (min-width: 720px){
+    body{
+        background-color: lightblue;
+    }
+    h1 {
+        background-color: brown;
+    }
+} 
+
+.rectangle{
+    width: 300px;
+    height: 200px;
+}
+.purple{
+    background-color: purple;
+}
+.green{
+    background-color: greenyellow;
+}
+@media (min-width: 721px) {
+    .rectangle-container{
+        display: flex;
+    }
+    .purple{
+        background-color: red;
+    }
+    .green{
+        background-color: burlywood;
+    }
+}
