@@ -1,0 +1,16 @@
+.green{
+    background-color: green;
+    border: 1px solid black;
+    /* width: 200px; */
+    padding: 20px;
+}
+.yellow{
+    background-color: yellow;
+    border: 1px solid black;
+    /* width: 200px; */
+}
+.pink{
+    background-color: pink;
+    border: 1px solid black;
+    /* width: 200px; */
+}
