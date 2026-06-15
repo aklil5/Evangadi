@@ -1,0 +1,67 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+img{
+    max-width: 100%;
+}
+.family{
+    text-align: center;
+    background-color: #6B19FE;
+    color: #FBE23A;
+}
+
+.paragraphs-wrapper div{
+    margin: 10px 5px;
+    font-size: 20px;
+}
+.images-wrapper div{
+    height: 310px;
+    background-size: cover;
+    width: 308px;
+    margin: 2% auto;
+}
+.puppy1 {
+    background-image: url(../images/puppy-1.jpg);
+}
+.puppy2{
+    background-image: url(../images/puppy-2.jpg);
+}
+
+
+@media(min-width: 960px){
+    .par2{
+        display: none;
+    }
+    .paragraphs-wrapper {
+        display: flex;
+    }
+    .puppy2{
+        background-image: url(../images/closeup-shot-beautiful-ginger-domestic-kitten-sitting-white-surface_181624-35913.avif);
+    }
+    .images-wrapper{ 
+        display: flex;
+        width: 650px;
+        margin: 0 auto;
+        
+    }
+     
+} 
+ 
+@media(min-width: 1140px) {
+    .par2{
+        display: block;
+    }
+    .paragraphs-wrapper div{
+        background-color: green;
+        color: white;
+        margin-inline: 20px;
+    }
+    .images-wrapper{
+        width: 960px
+    }
+    .paragraphs-wrapper{
+        width: 950px;
+        margin: 0 auto;
+    }
+} 
