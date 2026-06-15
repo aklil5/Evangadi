@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+img {
+    width: 100%;
+}
+.blueBG {
+    font-size: 40px;
+    background-color: #085070;
+    color: #fff;
+}
+.missing{
+    background-color: red;
+}
+.missing p {
+    font-size: 40px;
+}
+.more h2{
+    font-size: 45px;
+}
+@media(min-width: 992px) {
+    .missing p{
+        font-size: 55px;
+    }
+    
+}
