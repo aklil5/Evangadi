@@ -2,282 +2,148 @@
 //  make sure to connect your main.js file with your html 
 // happy coding 🧑‍💻
 
-// var document = {
-//     html: {
-//         head: {
-//             title: {
-//                 value: "The title"
-//             }
-//         }
-//     }
-// }
-// console.log(document.html.head.title.value); //The title
+// Question 1: The following three questions are based on the two paragraphs under the
+// section which says "For Question 1" in the index.html file.
+// 1.1 Select the element with an id of "sample1".
+// 1.2 Print the element itself on the console upon page refresh.
+// 1.3 Print the content of the element on the console upon page refresh.
+// Hint: Use the "textContent" property to select the content
 
-// document.html.head.title.value = "Another title"
 
-// console.log(document.html.head.title.value); //Another title
+// let sample = document.getElementById("sample1")
 
+// console.log(sample)
+// console.log(sample.textContent)
 
-// let red = document.getElementById("one")
 
-// console.log(red)
 
 
-// let blue = document.querySelector(".red");
-// blue.className = "blue"
 
 
-// console.log(document.querySelectorAll(".red"));
 
 
 
-// let elem = document.getElementsByClassName("red")
-// console.log(elem);  //length of 4 before elem[0] className was changed, after that length is 3
 
-// // elem[0].className = "blue"  
+// Question 2: The following questions are based on the HTML code found under the
+// section labeled "For question 2".
+// 2.1 Select the element with an ID of "techCompanies" and display it on your
+// console. (Do not use "querySelector" for this question)
+// 2.2 Use "querySelector" to select the element with an ID of "techCompanies"
+// and display it on your console.
+// 2.3 How many tech companies are listed under the ul element with an id of
+// "techCompanies"? Use "querySelectorAll" to count the total.
+// 2.4 Select all elements with a class name of "red" and display them on the
+// console. Use both "querySelectorAll" and "getElementByClass"
+// 2.5 Create a new li HTML element with a content of "Facebook" and display it
+// on console
+// 2.6 Give the newly created element a class of "blue" using JavaScript
+// 2.7 Append the newly created element next to the the "Sony" li element
+// 2.8 How many of the tech companies are labeled blue? Find the result
+// using JavaScript and display the result inside the "blueCompanies" div.
 
-// for (let i=0; i< elem.length; i++) {
-//     elem[i].className = "blue"
-// }
 
 
+// let company = document.getElementById("techCompanies")
+// console.log(company);
 
-// Solution to the live updating is changing it to static array
-// let temp = []
-// for (let i = 0; i < elem.length; i++){
-//     temp.push(elem[i])
-// }
-// console.log(temp);
 
+// let companyA = document.querySelector("#techCompanies")
+// console.log(companyA);
 
 
+// let companyTotal = document.querySelectorAll("#techCompanies li")
+// console.log(companyTotal.length);
 
 
 
+// let redd = document.querySelectorAll(".red")
+// console.log(redd);
+// let red2 = document.getElementsByClassName("red")
+// console.log(red2);
 
 
+// let newLi = document.createElement("li")
+// newLi.textContent = "Facebook"
 
-// let el3 = document.getElementsByTagName("li")
-// console.log(el3) // length dont change after the change of the first el3 className
+// console.log(newLi);
 
-// el3[0].className = "red"
+// newLi.classList.add("blue")
 
+// // 2.7
+// // let sony = company.lastElementChild
+// // or
+// let sony = document.querySelector("#techCompanies li:last-child")
+// sony.append(newLi)
 
-// let elem3 = document.getElementsByTagName("li")
-// console.log(elem3);
+// // after
 
-// // elem3[0].tag = "red"
 
-// for (let i=0; i< elem3.length; i++) {
-//     elem3[i].tagName = "h1"  // is it.className or .tagName
-// }
 
-// getElements byTagName is also live updating
-// let myElements = document.getElementsByTagName("h2")
+// let totalBlue = document.querySelectorAll(".blue")
+// totalBlue = totalBlue.length
+// console.log(totalBlue);
 
-// // for (let i=0; i < myElements.length; i++) {
-// // 	const elements = myElements[i]
-// // 	elements.outerHtml = `<li>${elements.textContent}</li>`
-// // }
-// console.log(myElements);
+// let blueCompanies = document.getElementById("blueCompanies")
+// blueCompanies.append(totalBlue)
 
 
 
 
 
-// // ===================================
-// // Traversing between multiple elements
 
 
-// let tanash = document.querySelector(".red").nextElementSibling
 
-// console.log(tanash);
 
-// let welaj = document.querySelector(".blue").parentNode
-// console.log(welaj);
-
-// let lj = document.getElementById("techCompanies").firstElementChild
-// console.log(lj);
-
-
-
-// =====================================
-
-
-
-// let para = document.getElementById("firstPar")
-
-// para.textContent = "iPhoone"
-
-
-// let newPar = document.createElement("p")
-
-// newPar.textContent = "Here is another paragraph"
-
-// document.getElementById("sample1").prepend(newPar)
-
-
-// let liEml = document.createElement("li")
-// liEml.innerText = "Avocado"
-
-// document.getElementById("techCompanies").prepend(liEml)
-
-
-// let parent = document.getElementById("techCompanies")
-// let tobeRemoved = document.getElementById("lastElem")
-
-// parent.removeChild(tobeRemoved)
-
-
-
-// let referencePt = document.getElementById("micro")
-
-// let newElem = document.createElement("li")
-// newElem.textContent = "the Samsung Family"
-
-// referencePt.after(newElem)
-
-
-
-// let samsungg = document.getElementById("sam")
-
-// console.log(samsungg.className)
-
-// samsungg.classList.add("yellowBg")
-
-// console.log(samsungg.className)
-
-// samsungg.classList.toggle("yellowBg")
-
-// samsungg.classList.toggle("yellowBg")
-
-// let samsung = document.getElementById("sam")
-
-// console.log(samsung.hasAttribute("class"))
-
-// console.log(samsung.getAttribute("class"))
-
-// samsung.setAttribute("class", "red")
-
-
-let companies = document.getElementById("techCompanies")
-
-companies.style.backgroundColor = "yellow"
-companies.style.color = "white"
-companies.style.fontSize = "40px"
-companies.style.border = "purple double 10px"
-companies.style.display = "none"
-companies.style.display = "block"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ============================================
-// Ways to Bind an event
-// 1. HTML event handlers
-
-
-// function alertMes(){
-//     alert("hi there clicker")
-// }
+// Question 3:
+// Change the background color of the page to light-blue (#99ecff) when clicked on the text
+// that says "Yes". If there is a background color set already, change it to none when clicked
+// on "No"
+// Hint: First, write two functions to alter the backgroundColor of the page. One to add a
+// background color, another to remove. Then, select the "yesBackground" or
+// "noBackground" element and bind the selected element with the click event. Finally,
+// attach the function you wrote to alter the background color when the respective element
+// is clicked on.
 
 function changeBg(){
-    document.body.style.backgroundColor = "purple"
+    document.body.style.backgroundColor = "#99ecff"
 }
 
-function removeBG(){
-    document.body.style.backgroundColor = ""
+
+
+
+function noBg(){
+    document.body.style.backgroundColor = "white"
 }
 
-// let yesButton = document.getElementById("yes")
-// yesButton.onclick = changeBg
-
-// yesButton.ondblclick = removeBG
-
-
-// document.getElementById("yes").addEventListener("dblclick", changeBg)
-
-
-
-// yesBtn.addEventListener("click", function() {
-//     document.body.style.backgroundColor = "green"
-// })
-
-// let linkedTag = document.getElementById("nextSite")
-
-// linkedTag.addEventListener("click", function(e) {
-//     e.preventDefault()
-//     linkedTag.textContent = "Not loading the new site, but showing you some text."
-// })
 
 
 
 
-// =====================================
-// Form Validation
 
-let nameCheck = document.getElementById("adder")
 
-nameCheck.onsubmit = formSubmitChecker;
 
-function formSubmitChecker(e){
-    
 
-    let errors = [];
 
-    let elErrorsDisplay = document.getElementById("errorsDisplay");
-    elErrorsDisplay.innerHTML = "";
-    
 
-    let elFirstName = document.getElementsByName("first-value")
 
-    let elAnotherName = document.getElementsByName("second-value");
 
-    let firstNameVal = elFirstName[0].value
-    let secondNameVal = elAnotherName[0].value
-    
-    if (!firstNameVal) {
-        errors.push("First value is empty")
-    } else if (secondNameVal.length < 7) {
-        errors.push("second val not > 7 characters.")
-    } else {
 
-    }
 
-    
-    if (errors.length > 0) {
-        e.preventDefault();
-        elErrorsDisplay.style.display = "block"
-        for (let i = 0; i < errors.length; i++) {
-            elErrorsDisplay.innerHTML += errors[i] + "<br>";
-        } else {
-            alert("Submitted")
-        }
+// Question 4:
+// A form with two text fields is provided under the section which says "For question 4".
+// Write a JavaScript code which takes the values of the two fields, checks if they are
+// number values and calculate the sum of the two numbers.
+// 1. Display the result on the console
+// 2. Display the result underneath the form
+// 3. If any of the numbers provided is not a number, display a message that says
+// "Please enter numerical values only" underneath the form
 
-    }
-}
+
+
+
+
+
+
+
+
+

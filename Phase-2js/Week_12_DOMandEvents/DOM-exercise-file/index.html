@@ -6,15 +6,15 @@
     <title>jQuery Practice</title>
 
     <link rel="stylesheet" href="style.css">
+
+    
   </head>
   <body>
     <h1>jQuery Practice</h1>
 
-    <h2> new note </h2>
-    <h2> another one </h2>
     <h4>For Question 1:</h4>
     <div id="sample1">
-      <p id="firstPar">This is a sample content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lectus justo, suscipit ac justo at, pretium eleifend leo. Praesent ipsum ante, elementum finibus gravida eu, tempor vitae mi. Sed molestie mauris nec eros finibus auctor. Integer non massa metus. Duis in tortor nec magna pellentesque dictum. Nunc tristique in sem ac hendrerit. Duis semper turpis fringilla urna rutrum vulputate.</p>
+      <p>This is a sample content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lectus justo, suscipit ac justo at, pretium eleifend leo. Praesent ipsum ante, elementum finibus gravida eu, tempor vitae mi. Sed molestie mauris nec eros finibus auctor. Integer non massa metus. Duis in tortor nec magna pellentesque dictum. Nunc tristique in sem ac hendrerit. Duis semper turpis fringilla urna rutrum vulputate.</p>
 
       <p>Aliquam lobortis fermentum arcu ut dignissim. Vestibulum quis lorem risus. Quisque cursus, lorem vitae sagittis posuere, sem turpis rhoncus magna, a consectetur est nisl ac quam. Cras faucibus venenatis orci ultrices elementum. Nulla facilisi. Praesent libero tellus, egestas vel mauris at, aliquet ullamcorper odio. Aliquam auctor laoreet enim vel dictum. Fusce a neque condimentum, suscipit dolor vel, placerat arcu. Nunc vel sapien eleifend, dignissim ex nec, interdum velit. Duis elit lorem, malesuada et sodales ut, sodales quis mi.</p>
     </div>
@@ -24,17 +24,17 @@
     <h4>For Question 2:</h4>
       <h5>List of top Tech companies</h5>
       <div>
-        <ul id="techCompanies" >
-          <li id="one" class="red">Apple</li>
-          <li class="blue" id="sam">Samsung</li>
+        <ul id="techCompanies">
+          <li class="red">Apple</li>
+          <li class="blue">Samsung</li>
           <li class="blue">Foxconn</li>
           <li class="red">Alphabet</li>
-          <li class="blue" id="micro">Microsoft</li>
+          <li class="blue">Microsoft</li>
           <li class="red">Huawei</li>
           <li class="blue">Dell</li>
           <li class="red">Hitachi</li>
           <li class="blue">IBM</li>
-          <li class="blue" id="lastElem">Sony</li>
+          <li class="blue">Sony</li>
         </ul>
 
         <div id="blueCompanies">
@@ -43,26 +43,11 @@
       </div>
 
     <hr>
-   <button onclick="alertMes()">Yes</button>
-   <button onclick="changeBg()">No</button>
-   <button onclick="removeBG()">remove BG</button>
-
-   <br>
-   <br>
-
-    <button id="yes">Yes</button>
-   <button id="No">No</button>
-   <button >remove BG</button>
-
-   <br>
-   <br>
-
-   <a href="#" id="nextSite">Go to the next site</a>
+   <button id="yes" onclick="changeBg()">Yes</button>
+   <button id="No" onclick="noBg()">No</button>
     <hr>
     <h4>For Question 4:</h4>
     <h5>The Sum and Average of two numbers</h5>
-
-    <div id="errorsDisplay"></div>
     <form id="adder" action="#" method="POST">
       <div class="form-values">
         <p>
@@ -87,7 +72,6 @@
       <button>submit</button>
     </form>
     
-
     <script src="main.js"></script>
   </body>
 </html>
