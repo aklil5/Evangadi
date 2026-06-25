@@ -139,6 +139,29 @@ function noBg(){
 // "Please enter numerical values only" underneath the form
 
 
+let myForm = document.getElementById("adder")
+
+myForm.addEventListener("submit", checkValidity)
+
+function checkValidity(e){
+    e.preventDefault();
+
+
+    let result = document.getElementById("sum")
+
+    let firstV = document.getElementsByName("first-value")[0].value
+    let secondV = document.getElementsByName("second-value")[0].value
+
+    if (firstV.trim() !== "" && secondV.trim() !== "" && !isNaN(firstV) && !isNaN(secondV)){
+        let sum = Number(firstV) + Number(secondV)
+ 
+        console.log(`sum is ${sum} Average is ${sum/2}`);
+        result.textContent = `sum is ${sum} Average is ${sum/2}`
+
+    } else {
+        result.textContent = "please enter numerical values only"
+    }
+}
 
 
 

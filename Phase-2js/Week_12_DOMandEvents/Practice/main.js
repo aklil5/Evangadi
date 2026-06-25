@@ -238,8 +238,10 @@ function removeBG(){
 
 
 
-// =====================================
+// ==================================================
+// ===================================================
 // Form Validation
+
 
 // pseudo code for function
 
@@ -254,63 +256,214 @@ function removeBG(){
 //  iterate through error array and display each message on the errorsDisplay
 
 
+
+
+
+// *********************************************************************
+// FIRST FORM
+
+// let form = document.getElementById("registration-form")
+// form.onsubmit = formSubmitChecker
+
+// function formSubmitChecker(e){
+//     var errors = [];
+
+//     let errorsDisplay = document.getElementById("errorsDisplay");
+//     errorsDisplay.innerHTML = "";
+
+
+//     let valOne = document.getElementsByName("first-name")[0];
+//     let valTwo = document.getElementsByName("password")[0];
+
+//     let val1 = valOne.value;
+//     let val2 = valTwo.value;
+
+    
+
+
+//     if (!val1) {
+//         errors.push("First name field is required.")
+//         valOne.style.backgroundColor = "pink"
+//     }
+//     if (!val2) {
+//         errors.push("Password is empty")
+//         valTwo.style.backgroundColor = "pink"
+//     } else if (val2.length < 5) {
+//         errors.push("Passwords not strong enough")
+//         valTwo.style.backgroundColor = "pink"
+//     } 
+
+
+//     if (errors.length > 0) {
+//         e.preventDefault()
+//         errorsDisplay.style.display = "block";
+//         for (let i = 0; i < errors.length; i++) {
+//             errorsDisplay.innerHTML += errors[i] + "<br>";
+//         }
+        
+//     } else {
+//         alert("Submitted");
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// **************************************
+// SECOND FORM
+
 let form = document.getElementById("adder")
-form.onsubmit = formSubmitChecker(e){
+form.onsubmit = formSubmitChecker
+
+function formSubmitChecker(e){
+    var errors = [];
+
+    let errorsDisplay = document.getElementById("errorsDisplay");
+    errorsDisplay.innerHTML = "";
+
+
+    let valOne = document.getElementsByName("first-value")[0];
+    let valTwo = document.getElementsByName("second-value")[0];
+
+    let val1 = valOne.value;
+    let val2 = valTwo.value;
+
+
+    if (!val1) {
+        errors.push("first value is empty")
+        valOne.style.backgroundColor = "red"
+    }
+    if (val2.length < 5) {
+        errors.push("second value is very short")
+        valTwo.style.backgroundColor = "red"
+    }
+
+
+    if (errors.length > 0) {
+        e.preventDefault()
+        errorsDisplay.style.display = "block";
+
+        for (let i = 0; i < errors.length; i++) {
+            errorsDisplay.innerHTML += errors[i] + "<br>";
+        }
+        
+    } else {
+        alert("Submitted");
+    }
+
+    
+
+}
+
+let aa = document.getElementById("first");
+console.dir(aa);
+
+
+
+
+
+
+
+
+
+// ================================================================================
+// Third Form
+
+// let form = document.getElementById("formID")
+
+
+// function checkValidity(e) {
+//     e.preventDefault();
+    
+//     let myInput = document.querySelectorAll("#formID input");
+    
+//     if (myInput[0].value.length == 0) {
+//         myInput[0].style.backgroundColor = "pink"
+//     }
+//     if (myInput[1].value.length == 0) {
+//         myInput[1].style.backgroundColor = "pink"
+//     }
+//     if (myInput[0].value.length !== 0 && myInput[1].value.length !== 0) {
+//         // Normally treated as strings
+//         let outPut = myInput[0].value + " " + myInput[1].value;
+
+//         // if you want to treat them as numbers
+//         // let outPut = Number(myInput[0].value) +  Number(myInput[1].value);
+
+//         let result = document.getElementById("result");
+//         result.textContent = outPut
+//     }
+
+// }
+
+// form.addEventListener("submit", checkValidity)
+
+
+
+
+
+// Different Backgrounds
+let button1 = document.getElementById("b1")
+button1.onmouseover = changeBG
+
+function changeBG(){
+    document.body.style.backgroundColor = "yellow"
+}
+
+function toggle() {
+    if (document.body.style.backgroundColor === "purple") {
+        document.body.style.backgroundColor = ""
+    } else {
+        document.body.style.backgroundColor = "purple"
+    }
+    
+}
+
+
+var b3 = document.getElementById("nightmode");
+// console.log(el);
+b3.addEventListener("click", nightmode);
+
+function nightmode() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.color = "white"
 
 }
 
 
 
 
+// *******************************************************************
+// EVENT PROPAGATION
+
+let div1 = document.getElementById("div1")
+let div2 = document.getElementById("div2")
+
+div1.style.backgroundColor = "green"
+div1.style.height = "400px"
+div1.style.width = "400px"
+
+
+div2.style.backgroundColor = "yellow"
+div2.style.height = "200px"
+div2.style.width = "200px"
 
 
 
+div1.addEventListener("click", () => alert("Div1 is clicked"))
+
+div2.addEventListener("click", (e) => {
+    e.stopPropagation();
+    alert("Div2 is clicked")
+})
 
 
-
-
-
-
-
-
-// let nameCheck = document.getElementById("adder")
-
-// nameCheck.onsubmit = formSubmitChecker;
-
-// function formSubmitChecker(e){
-    
-
-//     let errors = [];
-
-//     let elErrorsDisplay = document.getElementById("errorsDisplay");
-//     elErrorsDisplay.innerHTML = "";
-    
-
-//     let elFirstName = document.getElementsByName("first-value")
-
-//     let elAnotherName = document.getElementsByName("second-value");
-
-//     let firstNameVal = elFirstName[0].value
-//     let secondNameVal = elAnotherName[0].value
-    
-//     if (!firstNameVal) {
-//         errors.push("First value is empty")
-//     } else if (secondNameVal.length < 7) {
-//         errors.push("second val not > 7 characters.")
-//     } else {
-
-//     }
-
-    
-//     if (errors.length > 0) {
-//         e.preventDefault();
-//         elErrorsDisplay.style.display = "block"
-//         for (let i = 0; i < errors.length; i++) {
-//             elErrorsDisplay.innerHTML += errors[i] + "<br>";
-//         } 
-//     }
-//     else {
-//         alert("Submitted")
-//     }
-
-// }
