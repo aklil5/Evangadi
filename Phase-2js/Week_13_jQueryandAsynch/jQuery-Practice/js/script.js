@@ -153,7 +153,10 @@ $("#formsQ").on("submit", function(e){
     } else {
         $("#formsQ").hide()
 
-        $(".inputs").text(`${firstN}, ${lastN}, ${email}`)
+        $(".inputOutp").text(`
+            First Name: ${firstN}, 
+            Last Name: ${lastN}, 
+            Email: ${email}`)
     }
 })
 

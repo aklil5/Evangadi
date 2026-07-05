@@ -327,11 +327,19 @@ body {
 
   }
 
+/* Newly Added */
   .footer-links-wrapper{
-    display: block;
+    flex-direction: column;
   }
 
+  .footer-links-wrapper h3.expanded + ul{
+    display: block;
+  }
   
+
+  
+
+
   .footer-links-wrapper h3 {
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
