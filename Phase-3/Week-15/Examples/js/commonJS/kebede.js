@@ -53,18 +53,38 @@
 
 
 
-// USING COMMONJS STANDARD
+// // USING COMMONJS STANDARD
 
-const vars = require('./abebe.js')
+// const vars = require('./abebe.js')
 
 // console.log(vars.aklilu);
+// console.log(vars.kk);
 
-// since its an object, we can destructure it using
-
-const {aklilu, kk} = require('./abebe.js')
-console.log(aklilu);
-console.log(kk);
+// console.log(vars.add(2, 5));
 
 
+// // ORRR
+
+// // since its an object, we can destructure it using
+
+// // const {aklilu, kk} = require('./abebe.js')
+// // const {add} = require('./abebe.js')
 
 
+
+
+// console.log(aklilu);
+// console.log(kk);
+
+// console.log( add(2, 5));
+
+
+
+
+
+let who = require('./abebe.js')
+
+// console.log(who.name);
+
+let {age} = require("./abebe.js")
+console.log(age);
