@@ -19,5 +19,6 @@
 let name = "abebe"
 let age = 12;
 
-module.exports.name = name;
+
+module.exports.namesss = name;
 module.exports.age = age;

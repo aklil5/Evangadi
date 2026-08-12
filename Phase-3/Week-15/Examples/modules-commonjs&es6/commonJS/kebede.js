@@ -82,9 +82,8 @@
 
 
 
-let who = require('./abebe.js')
+const sebli = require('./abebe.js')
 
-// console.log(who.name);
 
-let {age} = require("./abebe.js")
-console.log(age);
+console.log(sebli.namesss);
+console.log(sebli.age);
