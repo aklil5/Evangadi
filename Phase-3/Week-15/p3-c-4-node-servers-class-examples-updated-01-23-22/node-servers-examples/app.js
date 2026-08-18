@@ -39,36 +39,40 @@
 // // Install mime-types to get access called lookup
 // const mimetypelookup = require("mime-types").lookup;
 
-// // Create the Server Object
-// const server = http.createServer(function (req, res) {
-//   // console.log(req);
-//   const parsedUrl = url.parse(req.url, true);
-//   // console.log(parsedUrl);
+// Create the Server Object
+const server = http.createServer(function (req, res) {
+  // console.log(req);
+  const parsedUrl = url.parse(req.url, true);
+  // console.log(parsedUrl);
 
-//   // // Requested file name
-//   let filePath = parsedUrl.path;
-//   // console.log(filePath);
-//   if (filePath == "/") {
-//     filePath = "/index.html";
-//   }
-//   var requestedFile = __dirname + "/public/" + filePath;
-//   // console.log(requestedFile);
-//   const readFile = fs.readFile(requestedFile, function (err, content) {
-//     if (err) {
-//       res.writeHead(404);
-//       res.end();
-//     } else {
-//       let mime = mimetypelookup(filePath);
-//       res.writeHead(200, { "content-type": mime });
-//       res.end(content);
-//     }
-//   });
-// });
+  // // Requested file name
+  let filePath = parsedUrl.path;
+  // console.log(filePath);
+  if (filePath == "/") {
+    filePath = "/index.html";
+  }
+  var requestedFile = __dirname + "/public/" + filePath;
+  // console.log(requestedFile);
+  const readFile = fs.readFile(requestedFile, function (err, content) {
+    if (err) {
+      res.writeHead(404);
+      res.end();
+    } else {
+      let mime = mimetypelookup(filePath);
+      res.writeHead(200, { "content-type": mime });
+      res.end(content);
+    }
+  });
+});
 
-// // Call the listen method to tell the server which port to listen to
-// server.listen(7777, function () {
-//   console.log("Listening to port 7777");
-// });
+// Call the listen method to tell the server which port to listen to
+server.listen(7777, function () {
+  console.log("Listening to port 7777");
+});
+
+
+
+
 
 // // 4: Serving simple message with Express
 // const express = require("express");

@@ -192,38 +192,124 @@ const url = require('url')
 
 
 
-const server = http.createServer((req, res) => {
-    let filePath = req.url
+// const server = http.createServer((req, res) => {
+//     let filePath = req.url
 
-    if (filePath == "/") {
-        filePath = "/index.html"
-    }
+//     if (filePath == "/") {
+//         filePath = "/index.html"
+//     }
     
-    // to GET THE REQUESTED URL
-    let requested = __dirname + "august" + filePath
-    // console.log(requested);
+//     // to GET THE REQUESTED URL
+//     let requested = __dirname + "/august" + filePath
+//     console.log(requested);
 
-    fs.readFile(requested, (err, content) => {
-        if (err) {
-            // Custom 404 Page
-            filePath = "notfound.html"
-            let page404 = __dirname + "august" + filePath;
 
-            fs.readFile(page404, (err, content) => {
-                res.writeHead(404, { "Content-Type": "text/html"});
-                res.end(content)
-            })
 
-        } else {
-            res.writeHead(200, { "content-type": "text/html"})
-            res.end(content)
-        }
-    })
+//     fs.readFile(requested, (err, content) => {
+//         if (err) {
+//             // Custom 404 Page
+//             filePath = "/notFound.html"
+//             let page404 = __dirname + "/august" + filePath;
 
-}).listen(4000, () => {
-    // to confirm its connecting
-    console.log("Listening on http://localhost:4000");
-})
+//             fs.readFile(page404, (err, content) => {
+//                 res.writeHead(404, { "Content-Type": "text/html"});
+//                 res.end(content)
+//             })
+
+//         } else {
+//             res.writeHead(200, { "content-type": "text/html"})
+//             res.end(content)
+//         }
+//     })
+
+// }).listen(4000, () => {
+//     // to confirm its connecting
+//     console.log("Listening on http://localhost:4000");
+// })
+
+
+
+
+
+// // ---------------------------
+// // LOADING PUPPY LOVERS PAGE
+
+// const server = http.createServer((req, res) => {
+//     let filePath = req.url
+
+//     if (filePath == "/") {
+//         filePath = "/index.html"
+//     }
+    
+//     // to GET THE REQUESTED URL
+//     let requested = __dirname + "/Puppy_Bootstrap" + filePath
+//     console.log(requested);
+
+
+
+//     fs.readFile(requested, (err, content) => {
+//         if (err) {
+//             // Custom 404 Page
+//             filePath = "/notFound.html"
+//             let page404 = __dirname + "/Puppy_Bootstrap" + filePath;
+
+//             fs.readFile(page404, (err, content) => {
+//                 res.writeHead(404, { "Content-Type": "text/html"});
+//                 res.end(content)
+//             })
+
+//         } else {
+//             res.writeHead(200, { "content-type": "text/html"})
+//             res.end(content)
+//         }
+//     })
+
+// }).listen(4000, () => {
+//     // to confirm its connecting
+//     console.log("Listening on http://localhost:4000");
+// })
+
+
+// -----------------------
+
+// THE PROBLEM HERE IS IT READS EVERY FILE AS HTML/TXT -> WHETHER ITS CSS OR JS
+
+// if you were to go to this page
+// http://localhost:4000/css/styles.css
+
+// if would see the css as a text
+
+// or this one http://localhost:4000/images/puppy-1.jpg
+// will just show a bunch of text instead of IMAGE
+// why
+// since we specified the content-type to be text/html, if we hadn't, it would have loaded the image itself
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -243,6 +329,7 @@ const server = http.createServer((req, res) => {
 //         res.writeHead(204);
 //         return res.end();
 //     }
+
 //     if (filePath == "/abebe.html") {
 //         var requestedFile = __dirname + filePath;
 //         fs.readFile(requestedFile, (err, content) => {
@@ -260,11 +347,6 @@ const server = http.createServer((req, res) => {
 //     }
 
 // }).listen(5000)
-
-
-
-
-
 
 
 
@@ -309,19 +391,7 @@ const server = http.createServer((req, res) => {
 
 
 
-// // THIS VS BRUKE'SSSSSSSSSSSSSSSSSSSSS
-
-
-
-
-
-
-
-
-
-
-
-
+// // THESE 2  VS BRUKE'SSSSSSSSSSSSSSSSSSSSS
 
 
 
@@ -380,9 +450,96 @@ const server = http.createServer((req, res) => {
 
 
 
-// ************* SERVING OUR STATIC APPLE WEBSITE WITH HTTP
+// ************* SERVING OUR STATIC APPLE and puppy WEBSITE WITH HTTP
 
 // **************************************
+
+// we use only three modules
+// fs, http and mime-types
+
+// we will have to download the module mime-types and use the lookup method to identify the type of a file
+
+// install it using `npm i  mime-types`
+
+// You can then find it in your package.json as dependency
+
+// const mimetypelookup = require("mime-types").lookup;  // this is a method -> mimetypelookup(filename)
+
+// const server = http.createServer((req, res) => {
+//     let filePath = req.url
+
+//     if (filePath == "/") {
+//         filePath = "/index.html"
+//     }
+    
+//     // to GET THE REQUESTED URL
+//     let requested = __dirname + "/Puppy_Bootstrap" + filePath
+//     // console.log(requested);
+
+
+
+//     fs.readFile(requested, (err, content) => {
+//         if (err) {
+//             res.writeHead(404);
+//             res.end(content)
+//         }
+//          else {
+//             let mime = mimetypelookup(filePath) 
+//             res.writeHead(200, { "content-type": mime })
+//             res.end(content)
+//         }
+//     })
+
+// }).listen(5000, () => {
+//     // to confirm its connecting
+//     console.log("Listening on http://localhost:4000");
+// })
+
+
+
+
+
+// Apple.com static web
+
+// const mimetypelookup = require("mime-types").lookup;  // this is a method -> mimetypelookup(filename)
+
+// const server = http.createServer((req, res) => {
+//     let filePath = req.url
+
+//     if (filePath == "/") {
+//         filePath = "/index.html"
+//     }
+    
+//     // to GET THE REQUESTED URL
+
+//     // we can do it without __dirname, starting from a folder
+//     let requestedFile = "./AppleBootstrapProject" + filePath
+//     // console.log(requestedFile);
+
+
+
+//     fs.readFile(requestedFile, (err, content) => {
+//         if (err) {
+//             res.writeHead(404);
+//             res.end(content)
+//         }
+//          else {
+//             let fileType = mimetypelookup(filePath) 
+//             res.writeHead(200, { "content-type": fileType })
+//             res.end(content)
+//         }
+//     })
+
+// }).listen(5000, () => {
+//     // to confirm its connecting
+//     console.log("Listening on http://localhost:5000");
+// })
+
+
+
+
+
+
 
 
 
@@ -402,6 +559,49 @@ const server = http.createServer((req, res) => {
 // ********** SERVING OUT STATIC APPLE WEBSITE WITH EXPRESS
 
 // ******************************************
+
+// there are inefficient ways http operates such as
+// not knowing by default
+    // '/' means index.html, 
+    // not identifying / assigning the mime type, 
+    // defining default file path
+    // response is sent
+
+// ALL THIS CAN BE DONE WITH the ""STATIC METHOD"""
+
+// - npm i express --save
+
+
+const express = require("express")
+
+// express() is like when we used createServer() in our http module
+
+const app = express()
+
+
+
+app.listen(3000, (err) => {
+    console.log("Listening to port 5000");
+})
+
+app.use(express.static("apple"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
