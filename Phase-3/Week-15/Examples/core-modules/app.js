@@ -18,6 +18,32 @@
 // ============================================
 // // fs MODULE
 
+// const { readdir, mkdir, readFile, writeFile } = require("fs")
+
+// readdir("abebe", (err, files) => {
+//     if (err) console.log("error", err);
+//     else console.log(files);
+// })
+
+
+// mkdir("./abebe/kebede/almaz", { recursive: true }, (err, path) => {
+//     if (err) console.log("error", err);
+//     console.log(path);  // if recursive is false it returns undefined - ({ recursive: true }) - this option is used to create parent directories if they don't exist.
+// } )
+
+// readFile("example.txt", "utf-8", (err, data) => {
+//     if (err) throw err;
+//     else console.log(data);
+// })
+
+// writeFile("abebe.txt", "Hello Classes", (err) => {
+//     if (err) throw err;
+//     console.log("The file has been saved!");
+// });
+
+
+
+
 // Read from a file
 // const fs = require('fs')
 // fs.readFile('./abebe.txt', 'utf8', (err, data) => {
@@ -38,6 +64,25 @@
 
 
 
+// // ==========================
+// // Events core module
+// const events = require("events");
+// const eventEmitter = new events.EventEmitter();
+
+// // create event handler
+// const myEventHandler = function() {
+//     console.log("Abet, selam new");
+// }
+
+// // assign event handler to event listener
+// eventEmitter.on("Abebe", myEventHandler);
+
+// // fire/trigger the event
+// eventEmitter.emit("Kbebe")
+
+
+
+
 
 // // =============================
 // // Path MODULE
@@ -50,6 +95,12 @@
 
 // const { Server } = require('http');
 // const path = require('path');
+// // console.log(path);
+
+// let pathObj = path.parse(__filename)
+// console.log(pathObj);     // information about the math: bath, room, base, extension, name
+
+// console.log(pathObj.ext);     // only to see the file extension
 
 // console.log(__filename);
 // console.log(__dirname);
@@ -59,7 +110,7 @@
 
 
 // const baseName = path.basename(filePath);
-// console.log("Base name:", baseName);
+// console.log("Base name:", baseName);     // AKA only the file name
 
 
 // const dirName = path.dirname(filePath);
@@ -72,352 +123,6 @@
 
 
 
-
-
-
-
-
-// ====================================
-// BUILDING HTTP WEB SERVER
-// ===========================
-
-// http method turns your computer to a Server
-
-
-
-
-
-// ***********DEFINING A WEB SERVER AND LISTENER
-
-// *****************************
-
-
-// const http = require('http');
-
-// function requestHandler(req, res){
-//     // whatever u wanna do on the server
-// }
-
-// http.createServer(requestHandler)
-
-
-// the common way is
-// const server = http.createServer((req, res) => {
-    
-// })
-
-// server.listen(5000)
-
-
-
-
-// ************ SERVING A SIMPLE MESSAGE USING HTTP MODULE 
-
-// ********************************
-
-// const server = http.createServer((req, res) => {
-//     console.log(req);
-//     // console.log(req.url);  // / if nothing is added, could be /test /about depending on what u search
-//     // console.log(req.headers);   // object with host, connection.....
-//     // console.log("Request received");
-
-
-//     // res.write('<h1>Evangadi</h1>')
-//     // res.write('<h1>Hello September</h1>')
-
-
-//     // ******we can also specify d/t response with d/t url
-//     if (req.url == '/'){
-//         res.write("<h1>Hello Evang</h1>")
-//     } else if (req.url == '/about') {
-//         res.setHeader('content-type', 'text/html')
-//         res.statusCode = 200;
-
-//         // or to write (the status code and content tyupe) together
-//         res.writeHead(200, {
-//             "content-type": 'text/html'
-//         })
-//         res.write("<h1>About page</h1>")
-        
-//     } else {
-//         res.write("<h1>Page Not Found</h2>")
-//     }
-
-//     // res.write() pushed data into the response stream, but keeps the connection open cause server may have more data to send later
-//     // res.end() tells Node.js "i am done writing data to this response. Close the HTTP headers/body connection and send it off"
-
-//     res.end("")   // to stop of from continuously loading?
-
-// })
-
-// server.listen(5000)
-
-// use port numbers >1024 when listening
-// server.listen(7897, function(){
-//     console.log("It is listening");
-// });
-
-
-
-// http.createServer([options] [, requestListener])
-
-// it takes 2 arguments, IncomingMessage and ServerResponse objects
-
-
-
-
-
-
-
-
-
-// ***********SERVING STATIC FILES WITH HTTP
-
-// ********************************
-
-// const http = require('http');
-// const fs = require('fs');
-
-
-// const server = http.createServer(function(req, res) {
-    
-//     // let filePath = req.url;
-//     // console.log(url); // ??????????????????????????????????????????????
-
-
-
-//     let requestedFile = __dirname + "/september" + filePath;
-//     // console.log(requestedFile);
-
-//     fs.readFile(requestedFile, (err, content) => {
-//         if(err) {
-//             res.writeHead(400);
-//             requestedFile = __dirname + "/september/notFound.html";
-//             fs.readFile(requestedFile, (err, content) => {
-//                 res.end(content);
-//             });
-//         } else {
-//             res.writeHead(200, { "content-type": "text/html" });
-//             res.end(content);
-//         }
-//     })
-
-//     res.write("Hello")
-// })
-
-// server.listen(5000, function(){
-//     console.log("Listening on http:localhost:5000");
-// })
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ************* SERVING OUR STATIC APPLE WEBSITE WITH HTTP
-
-// **************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ********** SERVING OUT STATIC APPLE WEBSITE WITH EXPRESS
-
-// ******************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 1. WHAT IS A WEB SERVER
-
-// - web server is an application installed in specific computer that understands and handled requests by ClientRequest. communication is done using Hypertext Transfer Protocol (HTTP)
-
-// local by flywhell
-
-
-// -------------------------------------------------
-// 2. WHAT DO WE MEAN BY HANDLING HTTP REQUUESTS
-// http request is made by a client, to a names host, which is located on a server. 
-// the aim of the request is to access a resource on the server.
-// to make the request, client uses components of a URL (uniform resource locator)
-
-
-// HTTP - application layer protocol - allows communication and exchange data
-// is the messenger of the web
-// is TCP/IP based protocol
-// used to deliver contents - images, audio, video, document
-
-
-
-
-
-
-
-
-
-// ----------------------------------------------
-// 3. HOW TO CREATE A SIMPLE SERVER THAT RETURNS A SIMPLE MESSAGE
-
-
-// const http = require('http');
-
-// const server = http.createServer((req, res) => {
-//     res.write("hi there")
-//     res.write('<h1>i am aklile</h1>');
-//     res.end()
-// }).listen(2000)
-
-
-
-
-// req object represents the incoming HTTP request form the client - browser or API client
-// it contains info sent by the client, such as URL paths, headers, HTTP methods (GET, POST)
-
-// res object represents the outgoing HTTP response that the server builds and sends back to the client.
-
-
-
-
-
-// -----------------------------------------
-// 4. WHAT DOES THE HTTP SERVER OBJECT INCLUDE?
-
-// http server object has the following main methods inside it
-    // listen() - makes server listen to ports on the computer, used to tell the specific port the server needs to listen
-    // close() - closes the server connection (stops listening)
-    // setTimeout() - sets the server's timeout value.
-
-
-
-
-
-
-// ---------------------------------------------
-// 5. DO YOU KNOW HOW TO SERVE STATIC FILES WITH HTTP
-
-// - FIRST you read the file, then you serve it
-
-// var fs = require('fs')
-// var http = require('http')
-
-// const server = http.createServer((req, res) => {
-//     // fs.readFile(path, callback): An asynchronous method that reads the entire file off the hard drive. Once finished reading, it executes the callback function
-
-//     fs.readFile(__dirname + req.url, function (err, data) {
-//         if (err) {
-//             res.writeHead(404)
-//             res.end(JSON.stringify(err));
-//             return;
-//         }
-//         res.writeHead(200);
-//         res.end(data);
-//     })
-// }).listen(8080)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// -------------------------------------------
-// 6. DO YOU KNOW WHAT EXPRESS IS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ---------------------------------------------
-// DO YOU KNOW WHY WE USE EXPRESS OVER THE HTTP MODULE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ---------------------------------------------
-// DO YOU KNOW HOW HTTP REQUESTS ARE HANDLED USING EXPRESS
-
-
-
-
-
-
-
-
-
-
-
-
-
-// DO YOU KNOW HOW TO SERVE STATIC FILES WITH EXPRESS?
 
 
 
