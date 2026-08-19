@@ -40,35 +40,35 @@
 // const mimetypelookup = require("mime-types").lookup;
 
 // Create the Server Object
-const server = http.createServer(function (req, res) {
-  // console.log(req);
-  const parsedUrl = url.parse(req.url, true);
-  // console.log(parsedUrl);
+// const server = http.createServer(function (req, res) {
+//   // console.log(req);
+//   const parsedUrl = url.parse(req.url, true);
+//   // console.log(parsedUrl);
 
-  // // Requested file name
-  let filePath = parsedUrl.path;
-  // console.log(filePath);
-  if (filePath == "/") {
-    filePath = "/index.html";
-  }
-  var requestedFile = __dirname + "/public/" + filePath;
-  // console.log(requestedFile);
-  const readFile = fs.readFile(requestedFile, function (err, content) {
-    if (err) {
-      res.writeHead(404);
-      res.end();
-    } else {
-      let mime = mimetypelookup(filePath);
-      res.writeHead(200, { "content-type": mime });
-      res.end(content);
-    }
-  });
-});
+//   // // Requested file name
+//   let filePath = parsedUrl.path;
+//   // console.log(filePath);
+//   if (filePath == "/") {
+//     filePath = "/index.html";
+//   }
+//   var requestedFile = __dirname + "/public/" + filePath;
+//   // console.log(requestedFile);
+//   const readFile = fs.readFile(requestedFile, function (err, content) {
+//     if (err) {
+//       res.writeHead(404);
+//       res.end();
+//     } else {
+//       let mime = mimetypelookup(filePath);
+//       res.writeHead(200, { "content-type": mime });
+//       res.end(content);
+//     }
+//   });
+// });
 
-// Call the listen method to tell the server which port to listen to
-server.listen(7777, function () {
-  console.log("Listening to port 7777");
-});
+// // Call the listen method to tell the server which port to listen to
+// server.listen(7777, function () {
+//   console.log("Listening to port 7777");
+// });
 
 
 
@@ -86,39 +86,39 @@ server.listen(7777, function () {
 // // One of the methods is the listen() method
 // // This is what makes it listen to the port
 
-// app.listen(3000, (err) => {
-//   if (err) {
-//     console.log("Error found" + err);
-//   }
-//   console.log("Listening to port 3000");
-// });
+app.listen(3000, (err) => {
+  if (err) {
+    console.log("Error found" + err);
+  }
+  console.log("Listening to port 3000");
+});
 
-// // The next thing we need to do is set up routes
-// // Home page route
-// // Returning "Hello Express"
+// The next thing we need to do is set up routes
+// Home page route
+// Returning "Hello Express"
 
-// app.get("/", (req, res) => {
-//   console.log(req.url);
-//   res.send("<h1>Hello Express!!</h1>");
-//   // It determines and includes the content header for us
-//   // It also includes all the other headers
-//   // Like status code, etag etc
-//   // We had to do this manually when we used http
-// });
+app.get("/", (req, res) => {
+  console.log(req.url);
+  res.send("<h1>Hello Express!!</h1>");
+  // It determines and includes the content header for us
+  // It also includes all the other headers
+  // Like status code, etag etc
+  // We had to do this manually when we used http
+});
 
 // // 5: Serving static page using Express
 // const express = require("express");
 
 // // Lets now create our Server Object
-// const app = express();
+const app = express();
 
-// app.listen(3000, (err) => {
-//   if (err) {
-//     console.log("Error found" + err);
-//   }
-//   console.log("Listening to port 3000");
-// });
+app.listen(3000, (err) => {
+  if (err) {
+    console.log("Error found" + err);
+  }
+  console.log("Listening to port 3000");
+});
 
 // // All we have to do in here is use the middleware function and provide the location where all the static files are located. Express searches the file inside the provided directory and serves the requested file
 
-// app.use(express.static("apple"));
+app.use(express.static("apple"));

@@ -14,5 +14,5 @@ module.exports.myMultiplier2 = myMultiplier;
 
 
 // Question 4
-const no = 14;
-module.exports.no = no
+const number = 14;
+module.exports.number = number

@@ -3,4 +3,7 @@ function random(){
 }
 
 let num = random()
-console.log(num);
+// console.log(num);
+
+
+module.exports.random = random

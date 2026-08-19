@@ -572,20 +572,136 @@ const url = require('url')
 // - npm i express --save
 
 
-const express = require("express")
 
-// express() is like when we used createServer() in our http module
+
+// =================================================
+// SERVING SIMPE MESSAGE WITH EXPRESS
+
+
+// const express = require("express")
+
+// // express() is like when we used createServer() in our http module
+
+// const app = express()
+// this creates an instance of an Express application
+
+// // the app object now has access to all of the methods in express module such as
+//     // listen() method
+    
+
+
+// app.listen(3000, (err) => {
+//     console.log("Listening to port 3000");
+// })
+
+
+// // next we have to set up routes
+//     // Home page route
+//     // Returning "Hello Express"
+
+// app.get("/", (req, res) => {
+//     console.log(req.url);
+//     res.send("<h1>Hello Express!!</h1>")
+//     // it determines and includes the content HEADER  and all the other heads like status code, etag for us
+// })
+
+
+// app.use(express.static("apple"))
+    // serves static files like html, css, image, js
+
+// app.use((req, res) => {
+    // res.send("Page not Found 404")
+// })
+
+    // Acts like a catch-all route handler for non-existent pages
+    // this function matches every single incoming HTTP request. However, it only executes if no previous middleware or route handler matched the request first.
+
+
+
+// =============================================================================
+// SERVING STATIC FILES WITH EXPRESS
+
+
+// const express = require("express")
+
+// const app = express()
+
+// app.use(express.static("AppleBootstrapProject"))
+
+// // non existing routes
+// app.use((req, res) => {
+//     res.send("Page Not Found 404")
+// })
+
+
+// app.listen(5000, (err) => {
+//     if(err) {
+//         console.log("Error found" + err);
+//     }
+//     console.log("Listening on: http://localhost:5000");
+// })
+
+
+// middleware - request tekemto, melso eskilk dres mahl lay masgebat metfelgutn functionalities add mtaregubet
+    // use()
+        // it can use the methods req(), res()
+
+// middleware is a function that sits directly in the path of an incoming HTTP request, executing logic before that request reaches your final route handler or sends a response back to the client.
+
+
+
+// static method - serve this folder with static website for me
+
+
+
+
+
+// VIDEO
+
+const express = require("express")
 
 const app = express()
 
+// const http = require("http")
+// console.log(http.METHODS);
+// console.log(http.STATUS_CODES);
 
 
-app.listen(3000, (err) => {
-    console.log("Listening to port 5000");
+app.get("/", (req, res) => {
+    console.log(req.headers); // all the info browser sent to us in the request
+    console.log(req.url);
+    console.log(req.ip);
+    console.log(req.method);
+    console.log(req.protocol);
+    console.log(req.path);  // the path part of the url
+    console.log(req.query);  
+    console.log(req.subdomains);  
+    console.log(req.query);  
+    console.log(req.params); //details for /use/72  or /product/234234  
+
+
+    res.status(404).end()
+})
+// will HANDLE GET REQUEST FOR THIS URL
+
+
+
+// app.post()
+
+
+app.listen(5000, (err) => {
+    if (err) {
+        console.log("There was a problem", err);
+    } else {
+        console.log("Listening on port 5000");
+    }
 })
 
-app.use(express.static("apple"))
 
+
+// MIDDLEWARE
+
+app.use() // is gonna run for every request
 
 
 
