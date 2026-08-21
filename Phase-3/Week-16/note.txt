@@ -1,0 +1,193 @@
+DATABASE  
+
+- collection of structured info or data, typically stored electronically in a computer system.
+traditional - we use spreadsheet
+Difficult for datamanagement
+        - access control, collaboration, to hold large amt of data  
+
+
+-------------------------------------
+MAIN CATEGORIES OF DB
+
+1. Relational DB
+2. NoSQL DATABASE
+
+1. Relational DB
+- stores and provides access to data points that are related to one another.
+Eg of DB system that use this mode: MS SQL server, Oracle DB and MySQL
+
+Relational Model
+- has multiple tables, tabular method
+- tables are structures relating to each other
+- has primary key => foreign key
+
+normalization: organizing a relational database to minimize data redundancy and prevent data anomalies. 
+- It involves splitting large, messy tables into smaller, logical tables and defining relationships between them.
+
+2. NoSQL DB
+- have documents with objects inside them
+- mostly key + value pair => like json
+Eg. MongoDB
+- when querying its straightforward, simple
+
+
+
+
+
+
+
+
+---------------------------------------------
+3. WORKING WITH DB USING NODE.JS: http verb
+
+CUD operation
+
+3.1 HTTP verbs
+HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
+
+        * GET
+                -  read some data and receive it      
+
+        * POST
+                -  i have new data that i need to be written or creating new data
+
+        * PUT AND PATCH
+                - are for updating
+           PUT 
+                - Replaces the entire data with a new representation in a single tables
+                - client sends the entire updated representation of the resource to the server 
+
+           PATCH  
+                - partially updates the data
+                - client sends only the specific changes to be applied to the resource
+
+        * DELETE
+        - means, i need to remove some data
+
+
+
+------------------------------------------------
+3.2. SQL Query Language
+
+- SQL is a query language used by nearly all relational DB to query, manipulate, and define data, and to provide access control.
+
+
+The most commonly used SQL Queries
+1. CREATE
+2. INSERT
+3. SELECT
+4. UPDATE 
+5. DELETE
+
+
+
+Connectin with MySql Database using Node.json
+- download MAMP
+or XAMP
+or Mysql
+
+
+
+
+------------------------------------
+MYSQL driver
+in a computer system, an adaptor program is required for making a connection to another system of different type. Eg. if your computer system wants to connect with an external printer, there needs to be a driver installed on your computer to facilitate the communication between the two.
+
+- in similar way, we need an adaptor to create the interface between Node.js and MySql as they are 2 different systems. This sw that serves as a connector of the 2 is called MySql Driver.
+
+=====================
+- Means, to access a MySQL database with Node.js, You need a MySQL driver.
+
+
+- There is a "mysql" driver module we can download from npm to create the connection
+
+        <npm install mysql>
+====================
+
+
+
+
+
+
+
+--------------------------------------
+
+to get started, you can start with 
+npm init 
+npm i mysql
+
+====== Steps to Connect MySql Database from Nodejs
+
+1. MySQL Configuration
+- in mySQL using "phpMyAdmin", first **CREATE A DB** and set up user credentials (username and password)
+
+- the best approach is to start with 
+        - User accounts -> add user acc -> 
+
+
+
+2. Install and Import MySQL Module
+- use **`npm install mysql2`** to install the MySQL driver.
+- import the MySQL module within your Node.js application
+
+
+
+3. Create a Connection
+- utilize the **"create Connection"** method provided by the MySQL module.
+- Pass the DB credentials (such as host, user, password, and database name as an object) 
+{
+        user: "EXACT info you used when creating the User & DB
+}
+
+4. Connect to the DB
+- Employ the "connect" method to establish the connection between Node.js application and the MySQL database
+
+
+
+The most commonly used SQL Queries
+1. CREATE
+2. INSERT
+3. SELECT
+4. UPDATE 
+5. DELETE
+
+we create the table NOT using MySQL but Node.js
+
+
+
+-------------------------------------------------------------
+1. CREATE
+Syntax:
+CREATE TABLE table_name (
+        column1 datatype,
+        column2 datatype,
+        column3 datatype,
+....
+);
+
+
+
+
+
+2. INSERT
+
+
+
+
+
+
+3. SELECT
+
+
+
+
+
+
+4. UPDATE 
+
+
+
+
+
+
+5. DELETE
