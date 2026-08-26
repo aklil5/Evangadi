@@ -1,0 +1,297 @@
+Intro to React
+
+1. Why React
+
+- React learning curve
+    - react has an easier learning curve
+    - devs dont need to spend a ton of time re-learning the programming language 
+
+- React has high demand
+    - Efficient Performance (fast)
+    - Reusabile UI Components
+    - can create large web apps that can change data, without reloading the page
+    - React can be used to create mobile apps (React Native)
+    - all in all, themain purpose of React is to be fast, scalable and simple
+
+
+
+
+
+
+
+
+
+
+
+-----------
+library
+- tools
+- performs specific tasks
+developer is in control
+
+
+FRAMEWORK
+- pre-defined structure
+- has defined boundary
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================
+---------------------------------
+
+2. What is React
+
+- a js library for building user interfaces
+
+library - collection of js functions with additional functionalities
+
+- we have already used another js library earlier in this course. The jQuery library
+
+- REACT - aims to increase the performance of apps and simplify the devt of visual interfaces.
+
+- React.js is used for handling the view layer of the full MVC stack for web and mobile apps.
+
+
+
+-----------
+What is MVC (Model-View-Controller)
+
+- MVC is a concept/architecture/design pattern programmers use when they build an app
+
+- in its simplest form, it can be as simple as 3 folders each dedicated to store the Model, View and Controller components of an application in an organized manner. 
+    - Model:
+    is the component that interacts with the DB and rns logics and Queries
+
+    - View:
+    is the component that generates the UI 
+
+    - Controller:
+    is the middle component receiving and sending data from the View component to the Model component and vise versa
+
+USER <=> VIEW (UI) <=> CONTROLLER (Intermediary) <=> MODEL (Database)
+
+
+-------------------
+Now a days "Micro Services" is more used
+
+- independent services are breakdowned and arranged
+
+
+
+
+
+
+
+
+=============================
+------------------------------------
+
+3. how does React work and what makes it faster
+
+- there are two main React libraries we use to build the UI components of web app
+    - react.js  &   react-dom.js
+
+- The react library is responsible for ***Creating the UI and managing/tracking changes****
+- ReactDOM library is responsible to ****actually render the UI in the browser***
+
+- What makes React efficient is the fact that it uses the React Virtual DOM (ReactDOM) to handle changes on DOM.
+
+
+
+What is ReactDOM (Virtual DOM)?
+
+- when you make an update on DOM, the entire object gets updated.
+- This is a very resource intensive process. Because the entire HTML and CSS needs to be recreated and re-rendered again.
+
+
+
+React has a different way of handling changes
+
+    - React starts by creating a replica of the real DOM. This replica is just a JS object that contains necessary description of what we want to be added on the DOM later. This representation of the actual DOM is called the virtual DOM/ReactDom
+
+    - React always keeps the previous version before change
+    
+    - Then it compares the current ReactDOM with the previous ReactDOM and identifies the difference. This is called ***diffing***.
+
+    - once it identifies the difference, It goes back to the Real DOM and only updates the part that is changes
+
+
+React follows batch update to update the real DOM:
+    - in react, updates to the real DOM are sent in batches, instead of sending updates for every single change in state.
+    - The UI won't be updated until after ***your event handler****, and any code in it, completes. This behavior, also known as batching, makes your React app run much faster.
+
+
+
+Render Tree = DOM + CSSOM
+    - it diffs
+    - then batch update
+    - then reconciliation
+
+
+
+
+
+
+
+
+
+
+----------------------------------------
+
+4. Generating HTML using vanilla Js VS generating HTML using ReactJS
+
+Generating HTML using Vanilla JS
+********************************
+
+- Traditionally, the DOM is generated from an HTML code that's passed to the browser directly. To improve the efficiency of recreating DOM, React decided to actually create the HTML using JS and manage it as JS object instead.
+
+- in other words, when you build your application using React, you actually create your HTML using JS.
+
+- To help us understand this concept, let's start by building a simple page where we create the HTML using JS.
+
+
+
+Generating HTML using React
+**************************
+- writing html using js won't help us improve performance at all. But if we use the React library, it provides us a way to manage changes without the need to re-render the entire DOM as it has its own efficient mechanism of handling that. Lets try to create the same page we created above using React this time.
+
+
+- First thing we need to do is grab the React and ReactDOM libraries and include them on your html. You can find the libraries from here.
+
+
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+
+- to describe the HTML elements we want to be rendered onthe browser later, we create <<React Elements>>
+
+
+What are React Elements?
+*************************
+
+- React element is the smallest entity in react.
+
+- its just a js object that describes the DOM element in memory.
+- we can use the <<React.createElement()>> method.
+
+Syntax:
+    React.createElement(type [props], [...children]);
+
+    the createElement method accepts three parameters:
+
+    1. type:
+    its the type of element you want to create
+    i.e. div, ul, li, section, etc. It could also be another react element.
+
+    2. props:
+    - its a js object that contains properties or data required to construct a DOM. 
+        Eg. class name, id name
+
+    3. children or content:
+    - there are children or content to display other nested elements.
+
+
+
+
+
+
+
+
+
+
+--------------------------------
+
+5. getting started with React devt - installing React, configuring npm, using create-react-app
+
+- Pre-requirements for create-react-app
+
+i. create-react-app
+    - gives u the boilerplace for the react devt
+        - React and React-DOM
+        - Babel
+        - react-scripts
+            devt dependency that manages all other dev dependencies that start, test and build your app
+
+    - syntax to create an app
+        << npx create-react-app my-app
+
+    - syntax to run the app
+        cd my-app
+        npm start
+
+2. Vite
+    - https://vitejs.dev/
+
+        - npm create vite@latest [my-app-name]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------
+
+6. React Devt: understanding the file structure of a react app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------
+7. What is JSX (JavaScript XML) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
