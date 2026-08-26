@@ -84,25 +84,4 @@ app.listen(2024, () => {
 
 
 
-// 2. INSERT
 
-
-
-
-
-
-// 3. SELECT
-
-
-
-
-
-
-// 4. UPDATE 
-
-
-
-
-
-
-// 5. DELETE

@@ -168,26 +168,191 @@ CREATE TABLE table_name (
 
 
 
+There are
+I. http verbs - connect front end with backend
+        - post, get, put, patch, delete
 
+
+II. sql lang - connect backend with database
+        - CREATE, INSERT, UPDATE, DELETE
+
+
+- What http method or verb is used on NodeJS?
+        - POST
+
+- How can people (including people who don't know anything about code) inser data into our table?
+        -       
+
+-------------------------------------------------------
 2. INSERT
 
+- is used to insert data into the tables we have on DB
+
+Syntax
+
+INSERT INTO table_name(
+        colmn1, colmn2, colmn2,...
+) VALUES {
+        value1, value2, value2, ....
+}
+
+INSERT INTO customers(name) values (abebe)
+
+
+QUESTIONS
+1.  What http method/ verb is used on Node/js??
+
+POST
+
+
+2. How can people (with no knowledge of DB) insert data into our tables? 
+
+
+
+---------------
+
+
+When to use GET:
+        Fetching a user profile (GET /users/123)
+
+        Performing a search (GET /search?term=nodejs)
+
+        Loading a webpage or static assets (images, CSS)
+
+When to use POST:
+
+        Submitting a registration form (POST /add-user-info)
+
+        Uploading files or images
+
+        Performing state-changing operations like processing a payment
+
+
+------------------
+
+
+CRUD
+
+1. Route: /add-customer => to inser customer data into the tables
+
+app.post()
 
 
 
 
+POSTMAN
+
+
+What if ..........
+
+Maybe if the front end is not ready for us yet, and we need to get started with the backend
+
+- there is a front end simulartor -> "POSTMAN" tool 
+
+- You can use -> "New HTTP Request" - but its not recommended
+- Instead create a collection by clicking the "+" button next to the Box with Filter and 
+        - you can write the collection name, choose your request type, then write the url 
+
+
+        - post request always has BODY 
+        since it expects inputs 
+        go to body -> choose raw -> choose the type -> usually we use JSON not Text
+        - we send the data as it is expected ->  
+{
+        "name": "aki",
+        "address": "addis"
+}
+
+// Middle ware to extract info from the frontend that are send through json
+// to read the json file send through tools like postman
+
+<<
+app.use(express.json())
+>>
+
+This will insert data to the DB and send response to the frontend
+
+
+
+
+
+
+
+2. Route: /customers => to retrieve data from the tables
+
+3. Route: /update => to update data from the tables
+
+4. Route: /remove-user => to delete all data from the tables
+
+
+
+
+
+
+
+------------------------------------------------------
 
 3. SELECT
+- used to select data from a DB
+
+Syntax:
+        SELECT *
+        FROM table_name
+
+
+you can also add condition, most used filters on SELECT statement
+        WHERE, ORDER BY, LIMIT 
+
+        WHERE product_id = 1;
+        ORDER BY product_id ASC - SORT BY ascending order or DESC
+        LIMIT 2 
+
+
+- what http method /verb is used on NodeJS?
+        - GET
+
+
+NOTE
+- any request you send to browser (eg. localhost:2025) is a GET request
+
+
+
+- How do we select the primary key and add it into the other tables as foreign key?
+
+
+- you can also use JOIN
 
 
 
 
+
+
+
+
+
+
+
+
+
+===================================
+------------------------------
 
 
 4. UPDATE 
 
+UPDATE table_name 
+SET column1 = value1, column2 = value2, ......
+WHERE condition;
 
+
+
+you add info to the body of request using postman
 
 
 
 
 5. DELETE
+
+DELETE FROM table_name WHERE condition;
+
+you add info to the body of request using postman
