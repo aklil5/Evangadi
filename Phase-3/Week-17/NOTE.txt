@@ -181,7 +181,7 @@ What are React Elements?
 
 - React element is the smallest entity in react.
 
-- its just a js object that describes the DOM element in memory.
+- its just a """js object""" that describes the DOM element in memory.
 - we can use the <<React.createElement()>> method.
 
 Syntax:
@@ -234,7 +234,8 @@ i. create-react-app
 
         - npm create vite@latest [my-app-name]
 
-
+    dedicated
+system
 
 
 
