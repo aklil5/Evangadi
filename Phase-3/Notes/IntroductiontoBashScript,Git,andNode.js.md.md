@@ -641,6 +641,21 @@ Physical Layer
 # 3. How does a local dynamic web page work?
 what makes DYNAMIC different from STATIC is that it has **SERVER**
 
+- dynamic web page is a page that contains content that is [[[dynamically generated during run time.]
+
+- the page is not fully written and tagged as HTML yet. Rather, it is generated when the browser requests the document.
+
+- Programming languages that have a compiler to help them directly communicate with the computer are called Backend programming lanauges.
+Eg. PHP, Java, C++, Js, etc
+
+- **Web server** - sw knows that the browser neds to receive only an HTML document, and it also understand that the browser doesnt know what to do with the PHP code.
+
+- When you install a web server on our computer, it defines two things:
+	1. the root directory, where it serves the files
+	2. the port it is listening to (port 80 by default) - HTTP req
+
+
+
 ## Static vs Dynamic webpages
 **Static (fixed)**
 - The content can't be changed by a client action
@@ -655,16 +670,21 @@ what makes DYNAMIC different from STATIC is that it has **SERVER**
 - Example
 	- Facebook, Instagram
 
-![[Pasted image 20260708151956.png]]
+
 
 
 
 ---
 
 # 4. How remote dynamic web pages work?
-- Remote dynamic web pages also work the same way as a local dynamic web page. There needs to be a compiler and a web server installed to be able to generate the dynamic content and send it back to the client which requests the data.
+- Remote dynamic web pages also work the same way as a local dynamic web page. 
+There needs to be a 
+	compiler and 
+	a web server installed to be able to generate the dynamic content and send it back to the client which requests the data.
 
-- One additional challenge when a web page is available of a publicly accessible domain is, [multiple people can request access the same page at the same time]. This phenomenon is called **"Concurrent Request"**.
+- One additional challenge when a web page is available of a publicly accessible domain is, [multiple people can request access the same page at the same time]. 
+This phenomenon is called **"Concurrent Request"**.
+
 
 - Being able to handle multiple requests at the same time is very critical specially when your web site has a lot of visitors. One of the ways to determine the effectiveness of a web server is to check its ability to handle concurrent requests.
 
@@ -688,10 +708,10 @@ what makes DYNAMIC different from STATIC is that it has **SERVER**
 
 ## How Web Servers traditionally handle concurrent requests
 
-- There used to be something called CGI (Common Gateway Interface). CGI is a standard that defines a way for a web server to interact with external content-generating programs, which are often referred to as CGI programs. These CGI programs cna be written using any language that can interface with the CGI. (Eg. C, C++, Java, PERL,...)
+- There used to be something called CGI (Common Gateway Interface). CGI is a standard that defines a way for a http web server to interact with external content-generating programs, which are often referred to as CGI programs. These CGI programs can be written using any language that can interface with the CGI. (Eg. C, C++, Java, PERL,...)
 	- CGI is an extension of the HTTP protocol.
 
-	- When the web server received the request, it passes the control to the CGI Application. The CGI interface will be used for that. To achieve this, there needs to be a new process for every request. Means each time an HTTP server receives a request, it initiates a new process.
+	- When the web server received the request, it passes the control to the CGI Application. The CGI interface will be used for that. To achieve this, there needs to be a new process for every request. Means each time an HTTP server receives a request, it initiates a [[new process.]
 
 	- Which is a very resource intensive if multiple requests are sent to the serer at the same time. It's like opening a new tab on your browser. To be specific, if the CGI Application is written using PHP, then the server needs to run new PHP on every request.
 
@@ -701,9 +721,21 @@ what makes DYNAMIC different from STATIC is that it has **SERVER**
 - Different web servers tried different methods to solve this problem of handling this concurrent request problem.
 
 - Most implemened this concept of threading. This is only possible if the program language supports threading in the first place.
-	- Threading is a way for a program to split itself into two or more ismultaneously running tasks. Threads are distinguished from processes in theat processes are typically independent.
+	- Threading is a way for a program to split itself into two or more ismultaneously running tasks. Threads are distinguished from processes in that processes are typically independent.
 	- Multiple threads, on the other hand, typically share the state information of a single process, and share memory and other resources directly.
-	- 
+
+- its because of threading that you can browse the web while you listen to music simultaneously on your computer.
+
+
+Every time you open an application, it creates a thread that will handle all the tasks of that specific application. At the core of a CPU, there is a single thread (which is a code) that creates another thread and allocates tasks to the newly created thread. A good analogy for this is when you open a new browser tab, a new tab is created from the existing tab
+
+
+**Threads vs processes**: 
+	A process is any program in execution.
+	Thread means a segment of a process.
+- processes are typically independent. Multiple threads, on the other hand, typically share the state information of a single process and share memory and other resources directly.
+
+
 - For example, the most common web server for Java is called Tomcat.
 	- Tomcat applied this concept of threading
 		- This is possible becuase Java supports multiple threading.
@@ -724,6 +756,8 @@ what makes DYNAMIC different from STATIC is that it has **SERVER**
 ## Blocking or Synchronous Architecture
 - This is the Architecture used by many web servers even to this day
 
+Synchronous architecture uses thread blocking, meaning a single thread is allocated to handle one request while other tasks remain idle until the first thread completes the task.
+
 **What it means is:**
 - When a request arrives, the request is received by the web server and is allocated to a thread to handle that request.
 	- Most of the times, requests involve getting data from the Database. Which involves querying the Database and getting the data.
@@ -739,8 +773,6 @@ what makes DYNAMIC different from STATIC is that it has **SERVER**
 	- How can we improve the speed of serving pages when there are a lot of concurrent requests?
 
 
-![[Pasted image 20260708154146.png]]
-
 thread - ye restaurant astenagaj
 
 
@@ -754,9 +786,19 @@ thread - ye restaurant astenagaj
 - Node JS
 	- is a runtime envt for JS, allowing you to run/execute JS code on the server side.
 	- Is single-threaded, **event-driven architecture**, which makes it efficient for handling a high volume of concurrent connections.
+
+Event Loop Model: Even if Node is single threaded, it has borrowed the event loop model from the JavaScript callback mechanism to enable it to do many different things at any given time.
+	- An event loop is an event-listener inside the Node.js environment. When the event loop detects those events, it triggers a callback function.
+
 	- Asynchronous/non-blocking
 		- while a file is being read or a network request is in progress, the thread can continue to process other tasks.
 
+
+Sockets: This is because asynchronous architecture uses threads
+with sockets (software that establishes bidirectional communication
+between a server and one or more client programs.
+
+Node.js
 	- Widely used for building real-time web applications
 		- Netflix, NASA, LinkedIn, Paypal, and many more use Node.js
 	- Commonly used for building server-side APIs
@@ -789,9 +831,20 @@ thread - ye restaurant astenagaj
 	- Languages like Ruby and Python couldn't be a good fit for that reason.
 - KS was ideal because it can use the Non-Blocking/Asynchronous architecture. Plus it was already known by many people.
 
+
+
+
+
+
 - **The only drawback for JS was that there was no compiler that was ready to be deployed on a server.**
+- the solution was to create a compiler that could translate the JavaScript instructions for the server computer. Having such a compiler meant that JavaScript could be used to write server-side
+applications with access to a computer’s operating system, file system, and everything else required to build fully functional applications
+
+
 #### Development of the JS Compiler
+
 - At the time of the inception of Node, browsers already had well developed JS run time compilers.
+
 - These JS compilers only came bundled with some kind of browser.
 	- Ryan(Developer of Node.js) took out the V8 engine, the fastest of JS compiler, from Chrome and created another sw that is able to execute JS outside of the Browser. He wrote that application using C++ and called it Node.js.
 
@@ -818,6 +871,10 @@ thread - ye restaurant astenagaj
 
 
 
-![[Pasted image 20260710080511.png]]
-
----
+**Getting started with Node.js:**
+- install node
+```
+npm i node
+npm init
+npm i express mysql2
+```
