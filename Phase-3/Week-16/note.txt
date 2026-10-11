@@ -199,13 +199,50 @@ INSERT INTO table_name(
 INSERT INTO customers(name) values (abebe)
 
 
+
+
+
+
+
+
+
+
+
+
+
 QUESTIONS
 1.  What http method/ verb is used on Node/js??
 
-POST
+        POST
 
 
 2. How can people (with no knowledge of DB) insert data into our tables? 
+
+        - create a frontend application that communicates with the backend for them
+
+                - create HTML page that has  aform
+                        - form tag
+                        - attributes
+                                 action = to the route you created on NodeJS
+                                method post
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
