@@ -23,9 +23,9 @@
 // createServer() method
 // ********************************
 
-// const http = require("http");
+const http = require("http");
 // const server = http.createServer((req, res) => {
-//     // res.setHeader("content-type", "text/html");
+//     res.setHeader("content-type", "text/html");
 //     console.log("Request received");
 //     res.writeHead(200);
 //     res.end("Hello there")
@@ -74,34 +74,34 @@
 //     res.write('<h1>Hello September</h1>')
 
 
-// //     // ***********************
-// //  // DIFFERENT RESPONSE FOR D/T ROUT/URL/REQ
-// //     if (req.url == '/'){
-// //         res.write("<h1>Hello Evang</h1>")
-// //     } else if (req.url == '/about') {
-// //         res.setHeader('content-type', 'text/html')
-// //         res.statusCode = 200;
+// // //     // ***********************
+// // //  // DIFFERENT RESPONSE FOR D/T ROUT/URL/REQ
+//     if (req.url == '/'){
+//         res.write("<h1>Hello Evang</h1>")
+//     } else if (req.url == '/about') {
+//         res.setHeader('content-type', 'text/html')
+//         res.statusCode = 200;
 
-// //         // or to write (the status code and content tyupe) together
-// //         res.writeHead(200, {
-// //             "content-type": 'text/html'
-// //         })
-// //         res.write("<h1>About page</h1>")
+//         // or to write (the status code and content tyupe) together
+//         res.writeHead(200, {
+//             "content-type": 'text/html'
+//         })
+//         res.write("<h1>About page</h1>")
         
-// //     } else {
-// //         res.write("<h1>Page Not Found</h2>")
-// //     }
+//     } else {
+//         res.write("<h1>Page Not Found</h2>")
+//     }
 
-// //     // res.write() pushed data into the response stream, but keeps the connection open cause server may have more data to send later
-// //     // res.end() tells Node.js "i am done writing data to this response. Close the HTTP headers/body connection and send it off"
+// // //     // res.write() pushed data into the response stream, but keeps the connection open cause server may have more data to send later
+// // //     // res.end() tells Node.js "i am done writing data to this response. Close the HTTP headers/body connection and send it off"
 
 // //     res.end("")   // to stop of from continuously loading?
 
-// })
+// // })
 
-// server.listen(5000)
+// // server.listen(5000)
 
-// use port numbers >1024 when listening
+// // use port numbers >1024 when listening
 // server.listen(7897, function(){
 //     console.log("It is listening");
 // });
@@ -132,7 +132,7 @@
 // the browser first has to read the file abebe.html
 // it has to only respond to abebe.html
 
-const http = require('http');
+// const http = require('http');
 const path = require('path')
 const fs = require('fs')
 const url = require('url')
@@ -398,38 +398,37 @@ const url = require('url')
 
 
 
-// const server = http.createServer(function(req, res) {
+const server = http.createServer(function(req, res) {
     
-//     let filePath = req.url;
-//     // console.log(url); // ??????????????????????????????????????????????
+    let filePath = req.url;
 
 
-//     // Manual path concatenation (risks double-slash bugs)
-//     let requestedFile = __dirname  + filePath;
-//     // console.log(requestedFile);
+    // Manual path concatenation (risks double-slash bugs)
+    let requestedFile = __dirname  + filePath;
+    // console.log(requestedFile);
 
-//     fs.readFile(requestedFile, (err, content) => {
-//         if(err) {
-//             res.writeHead(400);
+    fs.readFile(requestedFile, (err, content) => {
+        if(err) {
+            res.writeHead(400);
 
-//             // Overrides target to fallback HTML file
-//             requestedFile = __dirname + "/notFound.html";
+            // Overrides target to fallback HTML file
+            requestedFile = __dirname + "/notFound.html";
 
-//             // Nested async read to load custom error page content
-//             fs.readFile(requestedFile, (err, content) => {
-//                 res.end(content);
-//             });
-//         } else {
-//             res.writeHead(200, { "content-type": "text/html" });
-//             res.end(content);
-//         }
-//     })
+            // Nested async read to load custom error page content
+            fs.readFile(requestedFile, (err, content) => {
+                res.end(content);
+            });
+        } else {
+            res.writeHead(200, { "content-type": "text/html" });
+            res.end(content);
+        }
+    })
 
-// })
+})
 
-// server.listen(5000, function(){
-//     console.log("Listening on http:localhost:5000");
-// })
+server.listen(5000, function(){
+    console.log("Listening on http:localhost:5000");
+})
 
 
  
@@ -583,7 +582,7 @@ const url = require('url')
 // // express() is like when we used createServer() in our http module
 
 // const app = express()
-// this creates an instance of an Express application
+// // this creates an instance of an Express application
 
 // // the app object now has access to all of the methods in express module such as
 //     // listen() method
@@ -656,52 +655,52 @@ const url = require('url')
 
 
 
-// VIDEO
+// // VIDEO
 
-const express = require("express")
+// const express = require("express")
 
-const app = express()
+// const app = express()
 
-// const http = require("http")
-// console.log(http.METHODS);
-// console.log(http.STATUS_CODES);
-
-
-app.get("/", (req, res) => {
-    console.log(req.headers); // all the info browser sent to us in the request
-    console.log(req.url);
-    console.log(req.ip);
-    console.log(req.method);
-    console.log(req.protocol);
-    console.log(req.path);  // the path part of the url
-    console.log(req.query);  
-    console.log(req.subdomains);  
-    console.log(req.query);  
-    console.log(req.params); //details for /use/72  or /product/234234  
+// // const http = require("http")
+// // console.log(http.METHODS);
+// // console.log(http.STATUS_CODES);
 
 
-    res.status(404).end()
-})
-// will HANDLE GET REQUEST FOR THIS URL
+// app.get("/", (req, res) => {
+//     console.log(req.headers); // all the info browser sent to us in the request
+//     console.log(req.url);
+//     console.log(req.ip);
+//     console.log(req.method);
+//     console.log(req.protocol);
+//     console.log(req.path);  // the path part of the url
+//     console.log(req.query);  
+//     console.log(req.subdomains);  
+//     console.log(req.query);  
+//     console.log(req.params); //details for /use/72  or /product/234234  
+
+
+//     res.status(404).end()
+// })
+// // will HANDLE GET REQUEST FOR THIS URL
 
 
 
-// app.post()
+// // app.post()
 
 
-app.listen(5000, (err) => {
-    if (err) {
-        console.log("There was a problem", err);
-    } else {
-        console.log("Listening on port 5000");
-    }
-})
+// app.listen(5000, (err) => {
+//     if (err) {
+//         console.log("There was a problem", err);
+//     } else {
+//         console.log("Listening on port 5000");
+//     }
+// })
 
 
 
 // MIDDLEWARE
 
-app.use() // is gonna run for every request
+// app.use() // is gonna run for every request
 
 
 
@@ -835,7 +834,7 @@ app.use() // is gonna run for every request
 
 // -------------------------------------------
 // 6. DO YOU KNOW WHAT EXPRESS IS
-
+// Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile Applications. 
 
 
 
@@ -854,7 +853,14 @@ app.use() // is gonna run for every request
 // ---------------------------------------------
 // DO YOU KNOW WHY WE USE EXPRESS OVER THE HTTP MODULE
 
-
+// - The http module sets up connections to receive and send data through the HTTP protocol.
+// - But these are not the only things you need to take care of to build a well functioning web server. There are other issues that we need to handle too. For example:
+    // - The issue of setting individual routes for each asset we use (images, css files, js files, etc ..),
+    // - There is the issue of CORS if we are requesting resources from a different server,
+// Easier routing layer,
+// - Use of middleware to add additional functionalities, and
+// Automatic header information inclusion.
+// - So, Express took the functionality of the HTTP module and added the other needed parts to make things easier, but if what you need to do is just a simple serving of say for example a simple API, you are probably better off using HTTP module 
 
 
 
@@ -873,8 +879,17 @@ app.use() // is gonna run for every request
 // ---------------------------------------------
 // DO YOU KNOW HOW HTTP REQUESTS ARE HANDLED USING EXPRESS
 
+// Express has some helper functions for each one of the HTTP verbs and they are easy to remember because each function has the same name as the verb.
+// When we are browsing to localhost:4000, the browser sends a GET request for the root document at this URL: '/'.
+// We can tell our server how to handle that request with code similar to this:
 
 
+// server.get('/', (request, response) => {
+// // ... do something ...
+// }) 
+// server.get('/', (req, res) => {
+// res.send('Hello world from Express.');
+// }) 
 
 
 
@@ -886,3 +901,8 @@ app.use() // is gonna run for every request
 
 
 // DO YOU KNOW HOW TO SERVE STATIC FILES WITH EXPRESS?
+
+
+// To serve static files such as images, CSS files, and JavaScript files, use the express.static built-in middleware function in Express.
+// For example, use the following code to serve images, CSS files, and JavaScript files in a directory named public:
+// app.use(express.static('public')) 
