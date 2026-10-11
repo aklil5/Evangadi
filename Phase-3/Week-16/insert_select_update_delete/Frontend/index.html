@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+        <button 
+            type="button" 
+            onclick="displayForm('list', 'new', 'edit', 'delete')" >
+            List 
+        </button>
+        <button 
+            type="button" 
+            onclick="displayForm('edit', 'new', 'delete', 'delete')"> 
+            Edit
+        </button>
+        <button 
+            type="button" 
+            onclick="displayForm('delete', 'new', 'edit', 'list')"> 
+            Delete
+        </button>
+        <button 
+            type="button" 
+            onclick="displayForm('new', 'list', 'edit', 'delete')"> 
+            New
+        </button>
+
+    </div>
+
+
+    <!-- Insert customer info -->
+
+    <section>
+        <h1>Insert Customer Info</h1>
+
+        <form action="http://localhost:5000/add-customer" method="post" id="newForm">
+            <label for="name">Name:</label> <br>
+            <input type="text" name="name"> <br> <br>
+
+            <label for="address">Address:</label> <br>
+            <input type="text" name="address"> <br> <br>
+
+            <label for="company">Company:</label> <br>
+            <input type="text" name="company"> <br> <br>
+
+            <button type="submit" id="newFormBtn">Submit Info</button>
+
+        </form>
+
+    </section>
+
+    <!-- Update customer data form -->
+
+    <section style="display: none">
+        <h1>Update Customer Name</h1>
+        <form id="myForm">
+            <label for="name">ID:</label> <br>
+            <input type="text" name="id"> <br> <br>
+
+            <label for="name">New NameL</label> <br>
+            <input type="text" name="updatedName"> <br><br>
+            <button >Submit Updated Name</button>
+        </form>
+    </section>
+
+
+    <section class="delete" style="display: none">
+        <h1>Delete User</h1>
+
+        <form id="delete-user">
+            <label for="name">ID:</label>
+            <input type="text" name="id"> <br> <br>
+            <button class="btn">Delete User</button>
+        </form>
+    </section>
+
+
+    <!-- Section for listening customers -->
+    <section id="data" class="container list" style="display: none;"></section>
+
+
+
+
+    <script src="../app.js"></script>
+</body>
+</html>

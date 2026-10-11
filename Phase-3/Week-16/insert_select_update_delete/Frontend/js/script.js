@@ -6,28 +6,6 @@ function displayForm(show, hideOne, hideTwo, hideThree) {
 
 }
 
-function listCustomers(){
-    const usersDiv = document.getElementById("data");
-    usersDiv.innerHTML = "";
-
-    fetch("http://localhost:5000/customers")
-        .then((res) => res.json())
-        .then((data) => {
-            data.map((customer, i) => {
-                usersDiv.innerHTML += `
-                <div class="row">
-                    <h2 class="col-2"> ${customer.customer_id}</h2>
-                    <h2 class="col-2"> ${customer.name}</h2>
-                    <h2 class="col-2">${customer.address}</h2>
-                    <h2 class="col-2">${customer.company}</h2>
-                </div>
-                <hr>`;
-            });
-        });
-}
-
-document.getElementById("list").addEventListener("click", listCustomers)
-
 
 // update
 
@@ -46,9 +24,10 @@ function editName(e) {
         .then(() => alert("Name Updated!"))
 }
 
-
-
 document.getElementById("myForm").addEventListener("submit", editName);
+
+
+
 
 function deleteUser(e) {
     e.preventDefault();
@@ -77,3 +56,29 @@ function deleteUser(e) {
 }
 
 document.getElementById("delete-user").addEventListener("submit", deleteUser);
+
+
+
+
+
+function listCustomers(){
+    const usersDiv = document.getElementById("data");
+    usersDiv.innerHTML = "";
+
+    fetch("http://localhost:5000/customers")
+        .then((res) => res.json())
+        .then((data) => {
+            data.map((customer, i) => {
+                usersDiv.innerHTML += `
+                <div class="row">
+                    <h2 class="col-2"> ${customer.customer_id}</h2>
+                    <h2 class="col-2"> ${customer.name}</h2>
+                    <h2 class="col-2">${customer.address}</h2>
+                    <h2 class="col-2">${customer.company}</h2>
+                </div>
+                <hr>`;
+            });
+        });
+}
+
+document.getElementById("list").addEventListener("click", listCustomers)

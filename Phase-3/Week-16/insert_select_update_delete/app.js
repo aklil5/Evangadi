@@ -1,8 +1,12 @@
 const express = require('express')
 const mysql = require('mysql2')
+// const cors = require('cors')
+
 
 const app = express()
 
+// to enable access to our backend - for SELECT
+// app.use(cors())
 
 
 app.get("/", (req, res) => {
@@ -18,9 +22,9 @@ app.use(
         extended: true,
     })
 )
-
+ 
 // Middle ware to extract info from the frontend that are send through json
-// to read the json file send through tools like postman
+// to read the json file send through tools like POSTMAN
 app.use(express.json())
 
 
@@ -65,7 +69,7 @@ app.get("/create-tables", (req, res) => {
     )`
 
     connection.query(name, (err, results, fields) => {
-        if (err) console.log("Error founds: ", err);
+        if (err) console.log("Error found: ", err);
     })
 
     connection.query(address, (err, results, fields) => {
@@ -129,6 +133,8 @@ app.post("/add-user-info", (req, res) => {
 
     // fields gives you metadata
     // query (3 input - the sql to be queried(executed), the parametrized value [insert it as an array], callback)
+
+    // [name] inserted in place of the placeholder "?""
     connection.query(insertName, [name], (err, result, fields) => {
         if(err) console.log(err); 
         console.log(result);
@@ -159,105 +165,105 @@ app.post("/add-user-info", (req, res) => {
 
 
 
-// 3. SELECT
+// // 3. SELECT
 
-// ii. Route: /customers => to retrieve data from the tables
+// // ii. Route: /customers => to retrieve data from the tables
 
 
-// use can select the entire thing with *
-
-// app.get("/customers", (req, res) => {
-//     connection.query(
-//         "SELECT * FROM customers JOIN address JOIN company ON customers.customer_id = address.customer_id AND customers.customer_id = company.customer_id", (err, results, fields) => {
-//             if (err) console.log(err);
-//             res.send(results)
-//         }
-//     )
-
-// })
-
-// or to select specific things, use
+// // use can select the entire thing with *
 
 app.get("/customers", (req, res) => {
     connection.query(
-        "SELECT customers.customer_id AS id, customers.name, address.address, company.company FROM customers JOIN address JOIN company ON customers.customer_id = address.customer_id AND customers.customer_id = company.customer_id", 
-        (err, results, fields) => {
-            if (err) console.log("Error During selection", err);
+        "SELECT * FROM customers JOIN address JOIN company ON customers.customer_id = address.customer_id AND customers.customer_id = company.customer_id", (err, results, fields) => {
+            if (err) console.log(err);
             res.send(results)
         }
     )
+
 })
 
+// // or to select specific things, use
 
-
-
-
-// 4. UPDATE 
-
-// iii. Route: /update => to update data from the tables
-// just like there is data to accept from post in body, update also accepts data
-
-app.put("/update", (req, res) => {
-    const {newName, id} = req.body;
-
-    let updateName = `UPDATE customers SET name = '${newName}' WHERE customer_id = '${id}'`
-
-    connection.query(updateName, (err, result) => {
-        if (err) console.log(err)
-        else {
-            console.log("Data updated successfully");
-        }
-        res.send(result)
-    })
-})
+// // app.get("/customers", (req, res) => {
+// //     connection.query(
+// //         "SELECT customers.customer_id AS id, customers.name, address.address, company.company FROM customers JOIN address JOIN company ON customers.customer_id = address.customer_id AND customers.customer_id = company.customer_id", 
+// //         (err, results, fields) => {
+// //             if (err) console.log("Error During selection", err);
+// //             res.send(results)
+// //         }
+// //     )
+// // })
 
 
 
 
 
+// // 4. UPDATE 
 
-// 5. DELETE
+// // iii. Route: /update => to update data from the tables
+// // just like there is data to accept from post in body, update also accepts data
 
-// iv. Route: /remove-user => to delete all data from the tables
+// app.put("/update", (req, res) => {
+//     const {newName, id} = req.body;
 
-app.delete("/remove-user", (req, res) => {
-    const {id} = req.body
-    connection.query()
+//     let updateName = `UPDATE customers SET name = '${newName}' WHERE customer_id = '${id}'`
 
-    let removeName = `DELETE FROM customers WHERE customer_id = '${id}'`;
-    let removeAddress = `DELETE FROM address WHERE customer_id = '${id}'`;
-    let removeCompany = `DELETE FROM company WHERE customer_id = '${id}'`;
-
-
-    // we start executing from the dependent ones, where the value is used as foreign key in them, and them we delete the main thing
-
-    connection.query(removeAddress, (err, result) => {
-        if (err) console.log(err);
-        else {
-            console.log("User deleted successfully");
-        }
-    });
-    connection.query(removeCompany, (err, result) => {
-        if (err) console.log(err);
-        else {
-            console.log("User deleted successfully");
-        }
-    })
-    connection.query(removeName, (err, result) => {
-        if (err) console.log(err);
-        else {
-            console.log("User deleted successfully");
-        }
-    });
-
-    res.send("User Deleted")
-})
+//     connection.query(updateName, (err, result) => {
+//         if (err) console.log(err)
+//         else {
+//             console.log("Data updated successfully");
+//         }
+//         res.send(result)
+//     })
+// })
 
 
 
 
 
 
-app.listen(5000, () => {
+// // 5. DELETE
+
+// // iv. Route: /remove-user => to delete all data from the ALL THE TABLES - not just 1 because it can be used as foreign key
+
+// app.delete("/remove-user", (req, res) => {
+//     const {id} = req.body
+//     connection.query()
+
+//     let removeName = `DELETE FROM customers WHERE customer_id = '${id}'`;
+//     let removeAddress = `DELETE FROM address WHERE customer_id = '${id}'`;
+//     let removeCompany = `DELETE FROM company WHERE customer_id = '${id}'`;
+
+
+//     // we start executing from the dependent ones, where a primary key is used as foreign key in them, and them we delete the main thing
+
+//     connection.query(removeAddress, (err, result) => {
+//         if (err) console.log(err);
+//         else {
+//             console.log("User deleted successfully");
+//         }
+//     });
+//     connection.query(removeCompany, (err, result) => {
+//         if (err) console.log(err);
+//         else {
+//             console.log("User deleted successfully");
+//         }
+//     })
+//     connection.query(removeName, (err, result) => {
+//         if (err) console.log(err);
+//         else {
+//             console.log("User deleted successfully");
+//         }
+//     });
+
+//     res.send("User Deleted")
+// })
+
+
+
+
+
+
+app.listen(4000, () => {
     console.log("Listening and running on http://localhost:5000");
 })
