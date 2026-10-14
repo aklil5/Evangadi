@@ -57,12 +57,3 @@
 
 
 
-
-
-
-
-5. 
-// USING create-react-app
-
-// `npx create-react-app oct22`
-// - after entering our project folder oct 22 - we find everything configured
