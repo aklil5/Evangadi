@@ -1,12 +1,13 @@
 const express = require('express')
 const mysql = require('mysql2')
-// const cors = require('cors')
+const cors = require('cors')
 
 
 const app = express()
 
+
 // to enable access to our backend - for SELECT
-// app.use(cors())
+app.use(cors())
 
 
 app.get("/", (req, res) => {
@@ -63,6 +64,7 @@ app.get("/create-tables", (req, res) => {
         company_id int auto_increment,
         customer_id int(11) not null,
         company VARCHAR(255) not null,
+
         PRIMARY KEY (company_id),
         FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
 
@@ -100,7 +102,7 @@ app.get("/create-tables", (req, res) => {
 // CRUD = create, retrive, update, delete
 
 // 1. Route: /add-customer => to inser customer data into the tables
-
+ 
 // 2. Route: /customers => to retrieve data from the tables
 
 // 3. Route: /update => to update data from the tables
@@ -135,23 +137,28 @@ app.post("/add-user-info", (req, res) => {
     // query (3 input - the sql to be queried(executed), the parametrized value [insert it as an array], callback)
 
     // [name] inserted in place of the placeholder "?""
-    connection.query(insertName, [name], (err, result, fields) => {
-        if(err) console.log(err); 
-        console.log(result);
-        let id = result.insertId
+    connection.query(insertName, [name], (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send("Failed to insert customer");
+        }
+        const id = result.insertId;
 
-        connection.query(insertAddress, [id, address], (err, result) => {
-            if (err) console.log(err);
-        })
-
-        connection.query(insertCompany, [id, company], (err, result) => {
-            if(err) console.log(err);
-        })
-
-    })
-
-    res.send("Data inserted successfully")
-    
+        connection.query(insertAddress, [id, address], (err) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send("Failed to insert address");
+            }
+            connection.query(insertCompany, [id, company], (err) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).send("Failed to insert company");
+                }
+                res.send("Data inserted successfully");
+            });
+        });
+    });
+ 
 })
 
 
@@ -203,19 +210,27 @@ app.get("/customers", (req, res) => {
 // // iii. Route: /update => to update data from the tables
 // // just like there is data to accept from post in body, update also accepts data
 
-// app.put("/update", (req, res) => {
-//     const {newName, id} = req.body;
+app.put("/update", (req, res) => {
+    // CHANGED: was const {newName, id} = req.body;
+    const { id, updatedName, updatedAddress, updatedCompany } = req.body;
 
-//     let updateName = `UPDATE customers SET name = '${newName}' WHERE customer_id = '${id}'`
+    let updateName = "UPDATE customers SET name = ? WHERE customer_id = ?";
+    let updateAddress = "UPDATE address SET address = ? WHERE customer_id = ?";
+    let updateCompany = "UPDATE company SET company = ? WHERE customer_id = ?";
 
-//     connection.query(updateName, (err, result) => {
-//         if (err) console.log(err)
-//         else {
-//             console.log("Data updated successfully");
-//         }
-//         res.send(result)
-//     })
-// })
+    connection.query(updateName, [updatedName, id], (err) => {
+        if (err) return res.status(500).json({ error: err.message });
+
+        connection.query(updateAddress, [updatedAddress, id], (err) => {
+            if (err) return res.status(500).json({ error: err.message });
+
+            connection.query(updateCompany, [updatedCompany, id], (err) => {
+                if (err) return res.status(500).json({ error: err.message });
+                res.json({ message: "Customer updated successfully" });
+            });
+        });
+    });
+})
 
 
 
@@ -226,38 +241,37 @@ app.get("/customers", (req, res) => {
 
 // // iv. Route: /remove-user => to delete all data from the ALL THE TABLES - not just 1 because it can be used as foreign key
 
-// app.delete("/remove-user", (req, res) => {
-//     const {id} = req.body
-//     connection.query()
+app.delete("/remove-user", (req, res) => {
+    const {id} = req.body
 
-//     let removeName = `DELETE FROM customers WHERE customer_id = '${id}'`;
-//     let removeAddress = `DELETE FROM address WHERE customer_id = '${id}'`;
-//     let removeCompany = `DELETE FROM company WHERE customer_id = '${id}'`;
+    let removeName = `DELETE FROM customers WHERE customer_id = '${id}'`;
+    let removeAddress = `DELETE FROM address WHERE customer_id = '${id}'`;
+    let removeCompany = `DELETE FROM company WHERE customer_id = '${id}'`;
 
 
 //     // we start executing from the dependent ones, where a primary key is used as foreign key in them, and them we delete the main thing
 
-//     connection.query(removeAddress, (err, result) => {
-//         if (err) console.log(err);
-//         else {
-//             console.log("User deleted successfully");
-//         }
-//     });
-//     connection.query(removeCompany, (err, result) => {
-//         if (err) console.log(err);
-//         else {
-//             console.log("User deleted successfully");
-//         }
-//     })
-//     connection.query(removeName, (err, result) => {
-//         if (err) console.log(err);
-//         else {
-//             console.log("User deleted successfully");
-//         }
-//     });
+    connection.query(removeAddress, (err, result) => {
+        if (err) console.log(err);
+        else {
+            console.log("User deleted successfully");
+        }
+    });
+    connection.query(removeCompany, (err, result) => {
+        if (err) console.log(err);
+        else {
+            console.log("User deleted successfully");
+        }
+    })
+    connection.query(removeName, (err, result) => {
+        if (err) console.log(err);
+        else {
+            console.log("User deleted successfully");
+        }
+    });
 
-//     res.send("User Deleted")
-// })
+    res.json({ message: "User Deleted" })
+})
 
 
 
@@ -265,5 +279,5 @@ app.get("/customers", (req, res) => {
 
 
 app.listen(4000, () => {
-    console.log("Listening and running on http://localhost:5000");
+    console.log("Listening and running on http://localhost:4000");
 })

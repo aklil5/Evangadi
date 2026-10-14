@@ -12,12 +12,14 @@ function displayForm(show, hideOne, hideTwo, hideThree) {
 function editName(e) {
     e.preventDefault();
 
-    fetch("http://localhost:5000/update", {
+    fetch("http://localhost:4000/update", {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-            id: document.querySelector("#myForm input[name=id").value,
-            newName: document.querySelector("input[name=updatedName").value 
+            id: document.querySelector("#myForm input[name=id]").value,
+            updatedName: document.querySelector("#myForm input[name=updatedName]").value,
+            updatedAddress: document.querySelector("#myForm input[name=updatedAddress]").value,
+            updatedCompany: document.querySelector("#myForm input[name=updatedCompany]").value,
         }),
     })
         .then((response) => response.json())
@@ -25,6 +27,11 @@ function editName(e) {
 }
 
 document.getElementById("myForm").addEventListener("submit", editName);
+
+function startUpdate(id) {
+    displayForm('edit', 'new', 'delete', 'list');
+    document.querySelector("#myForm input[name=id]").value = id;
+}
 
 
 
@@ -40,18 +47,21 @@ function deleteUser(e) {
         deleteBox.style.backgroundColor = "pink";
         deleteBox.style.border = "red 2px solid";
     } else {
-        deleteBox.style.backgroundColor = "";
+        deleteBox.style.backgroundColor = "green";
         deleteBox.style.border = "";
 
-        fetch("http://localhost:5000/remove-user", ({
+        fetch("http://localhost:4000/remove-user", ({
             method: "DELETE",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
                 id: deleteID,
             }),
-        })).then((response) => response.json());
-        alert("User Deleted");
-        document.getElementById("delete-user").requestFullscreen()
+        })).then((response) => response.json())
+        .then((data) => {
+            alert(data.message);
+            document.getElementById("delete-user").reset();
+            })
+            .catch((err) => console.log(err));
     }
 }
 
@@ -65,7 +75,7 @@ function listCustomers(){
     const usersDiv = document.getElementById("data");
     usersDiv.innerHTML = "";
 
-    fetch("http://localhost:5000/customers")
+    fetch("http://localhost:4000/customers")
         .then((res) => res.json())
         .then((data) => {
             data.map((customer, i) => {
@@ -75,6 +85,7 @@ function listCustomers(){
                     <h2 class="col-2"> ${customer.name}</h2>
                     <h2 class="col-2">${customer.address}</h2>
                     <h2 class="col-2">${customer.company}</h2>
+                    <button onclick="startUpdate(${customer.customer_id})">Update</button>
                 </div>
                 <hr>`;
             });

@@ -8,14 +8,14 @@
 <body>
     <div>
 
+
         <button 
-            type="button" 
-            onclick="displayForm('list', 'new', 'edit', 'delete')" >
-            List 
+            type="button" id="list" 
+            onclick="displayForm('list', 'new', 'edit', 'delete')">
+            List
         </button>
-        <button 
-            type="button" 
-            onclick="displayForm('edit', 'new', 'delete', 'delete')"> 
+        <button type="button"
+         onclick="displayForm('edit', 'new', 'delete', 'list')">
             Edit
         </button>
         <button 
@@ -34,35 +34,46 @@
 
     <!-- Insert customer info -->
 
-    <section>
+    <section class="new">
         <h1>Insert Customer Info</h1>
 
-        <form action="http://localhost:5000/add-customer" method="post" id="newForm">
-            <label for="name">Name:</label> <br>
-            <input type="text" name="name"> <br> <br>
+        <form action="http://localhost:4000/add-user-info" method="post" id="newForm">
+        <label for="name">Name:</label> <br>
+        <input type="text" name="name" id="name"> <br> <br>
 
-            <label for="address">Address:</label> <br>
-            <input type="text" name="address"> <br> <br>
+        <label for="address">Address:</label> <br>
+        <input type="text" name="address" id="address"> <br> <br>
 
-            <label for="company">Company:</label> <br>
-            <input type="text" name="company"> <br> <br>
+        <label for="company">Company:</label> <br>
+        <input type="text" name="company" id="company"> <br> <br>
 
-            <button type="submit" id="newFormBtn">Submit Info</button>
+        <button type="submit" id="newFormBtn">Submit Info</button>
 
-        </form>
+        
+
+        
+    </form>
 
     </section>
 
     <!-- Update customer data form -->
 
-    <section style="display: none">
+    <section class="edit" style="display: none">
         <h1>Update Customer Name</h1>
         <form id="myForm">
             <label for="name">ID:</label> <br>
             <input type="text" name="id"> <br> <br>
 
-            <label for="name">New NameL</label> <br>
+            <label for="name">New Name</label> <br>
             <input type="text" name="updatedName"> <br><br>
+
+            <label>New Address:</label> <br>
+            <input type="text" name="updatedAddress"> <br><br>
+
+
+            <label>New Company:</label> <br>
+            <input type="text" name="updatedCompany"> <br><br>
+
             <button >Submit Updated Name</button>
         </form>
     </section>
@@ -85,6 +96,6 @@
 
 
 
-    <script src="../app.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
