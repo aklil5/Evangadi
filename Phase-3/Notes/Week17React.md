@@ -144,6 +144,11 @@ https://vitejs.dev
 ```
 npm create vite@latest (my-app-name)/my-batch
 ```
+to install bootstrap 
+```
+npm install react-bootstrap bootstrap
+```
+
 
 the commands
 ```
@@ -345,6 +350,8 @@ Steps
 
 - install this Extension
 `ES7 React/Redux/GraphQL/React-Native snippets`
+and
+`JS JSX Snippet`
  
 ---
 
