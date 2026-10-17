@@ -298,10 +298,41 @@ export default class Card extends Component {
 
 2. Collect the data then use map method an dimplement it with props
 
+Collect the data to a js file in an object
+let userData = 
+export let userData = [
+    {
+        colorNo:'firstColor',
+        name:'Adugna',
+        email:'adugna@gmail.com',
+        phone:'+123-456-789'
+    },
+    {
+        colorNo:'secondColor',
+        name:'Tewedaj',
+        email:'tewedaj@gmail.com',
+        phone:'+251-456-897'
+    },
+    {
+        colorNo:'thirdColor',
+        name:'Biruk',
+        email:'biruk@gmail.com',
+        phone:'+254-456-897'
+    }
+]
 
 
-
-
+{userData.map((singleUserData, i) => {
+            return (
+              <Card 
+              key={i}   // to unqiuely identify the data
+              colorNo={singleUserData.colorNo} 
+              name={singleUserData.name} 
+              email={singleUserData.email} 
+              phone={singleUserData.phone}
+              />
+            )
+          })}
 
 
 
@@ -310,6 +341,50 @@ export default class Card extends Component {
 3. Match the data keys and props - so you an use spread opeartor when mapping
 
 
+App.jsx
 
+<section className='wrapper'>
+
+          <h1>3. Using destructuring technique</h1>
+
+          <h1>Business Card App (using HTML & CSS only)</h1>
+
+
+          {userData.map(({colorNo, name, email, phone, group, batch}, i) => {
+            return (
+              <Card 
+              key={i}  // to unqiuely identify the data
+              colorNo={colorNo} 
+              name={name} 
+              email={email} 
+              phone={phone}
+              group={group}
+              batch={batch}
+              />
+            )
+          })}
+
+
+
+
+Card.jsx
+- IF YOU WANT A PARTICULAR INFO ONLY ON SOME USERS
+
+render() {
+    const {colorNo, name, email, phone, group, batch} = this.props;
+    // console.log(this.props);
+    return (
+        <div className={`container ${colorNo}`}> 
+            <h3>Evangadi INC.</h3>
+            <p>Name: {name}</p>
+            <p>Email: {email}</p>
+            <p>Phone number: {phone}</p>
+            {batch && <p>Batch: {batch}</p>}
+
+            <p>Group: {group}</p>
+            
+        </div>
+    )
+  }
 
 
